@@ -73,10 +73,10 @@ a {
 
 .site-header-image {
   width: 100%;
-  max-width: 1280px;
-  height: auto;
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
   display: block;
-  margin: 0 auto;
 }
 
 .site-title,
