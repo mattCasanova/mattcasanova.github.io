@@ -22,6 +22,16 @@ $tokyonight-border:     #292e42;
 body {
   background-color: $tokyonight-bg;
   color: $tokyonight-fg;
+  font-family: 'Inter', sans-serif;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.site-title {
+  font-family: 'Orbitron', sans-serif;
 }
 
 // Links
