@@ -1,6 +1,7 @@
 ---
 layout: post
-title: "Your Future Hasn't Been Written Yet"
+title: "Signal Through the Noise"
+date: 2026-04-11
 tags: [ai, software-engineering, career, opinion]
 ---
 
@@ -46,11 +47,11 @@ Every generation of tooling raises the floor. The people who thrive are the ones
 
 ## I Was Skeptical Too
 
-I remember at the beginning of 2025, Zuckerberg said something about AI coding at the level of a mid-level engineer by the end of the year. I'd been trying to use our internal AI tools at work — they made mistakes, didn't write tests well, produced code I had to heavily edit. My coworkers and I were skeptical. That's a bold prediction.
+I remember at the beginning of 2025, Zuckerberg said something about AI coding at the level of a mid-level engineer by the end of the year. I'd been trying to use our internal AI tools at work — they made mistakes, didn't write tests well, produced code I had to heavily edit. My coworkers and I were skeptical. That's a bold prediction. At the time, AI was generating a lot of noise but not much signal.
 
 By September 2025, it was better but still not great. I was using it because I had a lot to get done fast, but it was hit-or-miss. More hit than before, but still enough misses to be frustrating.
 
-Then around February 2026, I started using Claude Code. And I was blown away.
+Then around February 2026, I started using Claude Code. And I was blown away. Zuckerberg's prediction was off by a month or two.
 
 Part of it was timing — I had just switched teams at Meta after five years. New team, new codebase, different language than what I was used to. I *had* to lean into AI because I needed to get up to speed fast. So I used it to understand the codebase, understand the language nuances, understand why the team made certain architectural decisions. And then I started using it to ship actual work.
 
@@ -64,11 +65,15 @@ Here's the thing people miss: AI hasn't lowered the bar for expertise. It's rais
 
 The bar to *look like* an expert has never been easier to reach. Anyone can generate a working app. Anyone can generate a website. Anyone can produce code that compiles and runs. The floor has come up dramatically.
 
-But that means the definition of "expert" has changed. If everyone can build an app, what does it mean to build a *great* app? If everyone can write code, what does it mean to write code that scales, that's maintainable, that doesn't fall apart when you add the fifth feature?
+Think about it this way. When Facebook launched, the novelty was the idea. But after Facebook existed, anyone could rebuild it — even before AI. The implementation wasn't the hard part. The insight was. Now with AI, it's the same dynamic accelerated to everything. Anyone can build a game. Anyone can build a Mario clone. If you could just type "make me a Halo clone with dinosaurs" and get a working game, then cool — but if *everyone* can do that, then Halo with dinosaurs isn't interesting. Neither is Halo with vampires, or Halo with robots. Nobody cares. It stops being novel.
 
-The answer is the same thing it's always been: architecture, design, judgment, experience. The stuff you can't generate. The stuff that comes from years of building things, breaking things, and learning why they broke.
+What *is* interesting is what comes next. The people with taste and judgment who look at these tools and say: now I can build something that wasn't possible before. Now I can push the boundaries. An open-source GPU-rendered terminal with block-based output? That's not a one-sentence prompt. That's architecture, domain knowledge, and a thousand judgment calls about where the module boundaries go. (To be fair, nobody said I had taste — I certainly wouldn't give myself that title. But I'm trying.)
 
-AI slop is real, and there's going to be more of it. But as the expert, you can rise above it. Your experience is the filter. Your judgment is the differentiator. And now you have tools that let you apply that judgment at a speed that would have been impossible before.
+The bar has been raised because we can actually do more. If everyone can build an app, what does it mean to build a *great* app? If everyone can write code, what does it mean to write code that scales, that's maintainable, that doesn't fall apart when you add the fifth feature?
+
+The answer is the same thing it's always been: taste, judgment, experience. The stuff you can't generate. The stuff that comes from years of building things, breaking things, and learning why they broke.
+
+AI slop is real, and there's going to be more of it. But as the expert, you can rise above it. Your experience is the filter. Your taste is the differentiator. And now you have tools that let you apply that taste at a speed that would have been impossible before.
 
 ## Just Use It
 
@@ -80,4 +85,8 @@ If your skills are actually valuable — and they are — then these tools shoul
 
 If you don't use them, someone who does will eventually build what you could have built, in a fraction of the time.
 
-Your future hasn't been written yet. But the tools to write it are sitting right there.
+The noise is getting louder. There's more AI slop every day — more generated apps, more generated art, more generated everything. That's not going to stop.
+
+But the signal still matters. Your taste, your judgment, your experience — that's the signal. And now you have tools that amplify it.
+
+Be the signal.
