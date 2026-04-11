@@ -1,0 +1,12 @@
+title: Matt Casanova
+description: Game engines, terminals, and things that go fast.
+url: "https://mattcasanova.github.io"
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+github_username: mattcasanova
+
+markdown: kramdown
+highlighter: rouge
