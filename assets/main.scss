@@ -34,7 +34,8 @@ a {
     font-weight: normal;
   }
 
-  &:hover {
+  &:hover,
+  &:visited:hover {
     color: $tokyonight-yellow;
   }
 }
