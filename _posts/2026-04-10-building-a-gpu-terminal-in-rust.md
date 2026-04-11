@@ -2,7 +2,7 @@
 layout: post
 title: "Building a GPU Terminal in Rust: Why and How"
 date: 2026-04-10
-categories: [flux, rust, terminal]
+tags: [flux, rust, terminal, gpu]
 ---
 
 I've been using Warp for a while and I love the block-based UI — each command and its output grouped into a discrete, collapsible, copyable block. But the closed-source nature and telemetry bother me. So I'm building an open-source alternative called [Flux](https://github.com/mattcasanova/flux).

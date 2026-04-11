@@ -8,5 +8,7 @@ plugins:
 
 github_username: mattcasanova
 
+permalink: /:year/:month/:day/:title/
+
 markdown: kramdown
 highlighter: rouge
