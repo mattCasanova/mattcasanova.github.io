@@ -77,6 +77,12 @@ a {
   display: block;
 }
 
+.site-header-image--compact {
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+}
+
 .site-title,
 .site-title:visited {
   color: $tokyonight-fg;
