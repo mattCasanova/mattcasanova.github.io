@@ -28,7 +28,11 @@ body {
 // Headings
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Orbitron', sans-serif;
-  color: $tokyonight-blue;
+  color: $tokyonight-yellow;
+}
+
+.post-title {
+  color: $tokyonight-yellow;
 }
 
 .site-title {
@@ -101,10 +105,6 @@ h1, h2, h3, h4, h5, h6 {
   color: $tokyonight-fg;
 }
 
-// Post titles
-.post-title {
-  color: $tokyonight-blue;
-}
 
 .post-link {
   color: $tokyonight-red;
