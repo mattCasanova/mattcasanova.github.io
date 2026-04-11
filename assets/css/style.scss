@@ -1,0 +1,163 @@
+---
+---
+
+// Tokyo Night color palette
+$tokyonight-bg:         #1a1b26;
+$tokyonight-bg-dark:    #16161e;
+$tokyonight-bg-light:   #24283b;
+$tokyonight-fg:         #a9b1d6;
+$tokyonight-fg-dark:    #565f89;
+$tokyonight-blue:       #7aa2f7;
+$tokyonight-cyan:       #7dcfff;
+$tokyonight-green:      #9ece6a;
+$tokyonight-orange:     #ff9e64;
+$tokyonight-red:        #f7768e;
+$tokyonight-purple:     #bb9af7;
+$tokyonight-yellow:     #e0af68;
+$tokyonight-border:     #292e42;
+
+@import "minima";
+
+// Base
+body {
+  background-color: $tokyonight-bg;
+  color: $tokyonight-fg;
+}
+
+// Links
+a {
+  color: $tokyonight-blue;
+
+  &:visited {
+    color: $tokyonight-purple;
+  }
+
+  &:hover {
+    color: $tokyonight-cyan;
+  }
+}
+
+// Header
+.site-header {
+  background-color: $tokyonight-bg-dark;
+  border-top: 3px solid $tokyonight-blue;
+  border-bottom: 1px solid $tokyonight-border;
+}
+
+.site-title,
+.site-title:visited {
+  color: $tokyonight-fg;
+}
+
+.site-nav .page-link {
+  color: $tokyonight-fg;
+
+  &:hover {
+    color: $tokyonight-cyan;
+  }
+}
+
+// Footer
+.site-footer {
+  background-color: $tokyonight-bg-dark;
+  border-top: 1px solid $tokyonight-border;
+  color: $tokyonight-fg-dark;
+}
+
+.footer-col-wrapper {
+  color: $tokyonight-fg-dark;
+}
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  color: $tokyonight-fg;
+}
+
+// Post titles
+.post-title {
+  color: $tokyonight-fg;
+}
+
+.post-link {
+  color: $tokyonight-blue;
+
+  &:hover {
+    color: $tokyonight-cyan;
+  }
+}
+
+// Post metadata
+.post-meta {
+  color: $tokyonight-fg-dark;
+}
+
+// Code blocks
+code {
+  background-color: $tokyonight-bg-light;
+  color: $tokyonight-red;
+  border: 1px solid $tokyonight-border;
+  border-radius: 4px;
+}
+
+pre {
+  background-color: $tokyonight-bg-dark;
+  border: 1px solid $tokyonight-border;
+  border-radius: 6px;
+
+  code {
+    background-color: transparent;
+    color: $tokyonight-fg;
+    border: none;
+  }
+}
+
+// Syntax highlighting (Tokyo Night)
+.highlight {
+  background-color: $tokyonight-bg-dark;
+
+  .k, .kd, .kn, .kp, .kr, .kt { color: $tokyonight-purple; }   // keywords
+  .s, .s1, .s2, .sb, .sc, .sh, .sx { color: $tokyonight-green; } // strings
+  .c, .c1, .cm, .cp, .cs { color: $tokyonight-fg-dark; font-style: italic; } // comments
+  .nf, .nx { color: $tokyonight-blue; }                          // function names
+  .na { color: $tokyonight-cyan; }                                // attributes
+  .nb { color: $tokyonight-cyan; }                                // builtins
+  .nc { color: $tokyonight-yellow; }                              // class names
+  .no { color: $tokyonight-orange; }                              // constants
+  .mi, .mf, .mh, .mo { color: $tokyonight-orange; }              // numbers
+  .o, .ow { color: $tokyonight-cyan; }                            // operators
+  .p { color: $tokyonight-fg; }                                   // punctuation
+  .nn { color: $tokyonight-blue; }                                // module names
+  .err { color: $tokyonight-red; }                                // errors
+}
+
+// Blockquotes
+blockquote {
+  color: $tokyonight-fg-dark;
+  border-left: 4px solid $tokyonight-blue;
+}
+
+// Horizontal rules
+hr {
+  border-color: $tokyonight-border;
+}
+
+// Tables
+table {
+  color: $tokyonight-fg;
+  border-color: $tokyonight-border;
+
+  th {
+    background-color: $tokyonight-bg-light;
+    border-color: $tokyonight-border;
+  }
+
+  td {
+    border-color: $tokyonight-border;
+  }
+}
+
+// Selection
+::selection {
+  background-color: #283457;
+  color: $tokyonight-fg;
+}
