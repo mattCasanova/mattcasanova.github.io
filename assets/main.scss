@@ -30,12 +30,12 @@ a {
   font-weight: bold;
 
   &:visited {
-    color: $tokyonight-yellow;
+    color: $tokyonight-cyan;
     font-weight: normal;
   }
 
   &:hover {
-    color: $tokyonight-cyan;
+    color: $tokyonight-yellow;
   }
 }
 
