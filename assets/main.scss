@@ -91,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
   color: $tokyonight-fg-dark;
 }
 
-// Code blocks
+// Inline code
 code {
   background-color: $tokyonight-bg-light;
   color: $tokyonight-red;
@@ -99,16 +99,28 @@ code {
   border-radius: 4px;
 }
 
-pre {
+// Code blocks
+div.highlighter-rouge,
+figure.highlight {
   background-color: $tokyonight-bg-dark;
   border: 1px solid $tokyonight-border;
   border-radius: 6px;
+}
 
-  code {
-    background-color: transparent;
-    color: $tokyonight-fg;
-    border: none;
-  }
+.highlighter-rouge .highlight,
+.highlight {
+  background-color: $tokyonight-bg-dark;
+}
+
+pre.highlight {
+  background-color: $tokyonight-bg-dark;
+  color: $tokyonight-fg;
+}
+
+pre code {
+  background-color: transparent;
+  color: $tokyonight-fg;
+  border: none;
 }
 
 // Syntax highlighting (Tokyo Night)
@@ -127,7 +139,7 @@ pre {
   .o, .ow { color: $tokyonight-cyan; }                            // operators
   .p { color: $tokyonight-fg; }                                   // punctuation
   .nn { color: $tokyonight-blue; }                                // module names
-  .err { color: $tokyonight-red; }                                // errors
+  .err { color: $tokyonight-red; background-color: transparent; } // errors
 }
 
 // Blockquotes
