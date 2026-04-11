@@ -27,9 +27,11 @@ body {
 // Links
 a {
   color: $tokyonight-red;
+  font-weight: bold;
 
   &:visited {
     color: $tokyonight-yellow;
+    font-weight: normal;
   }
 
   &:hover {
