@@ -1,27 +1,68 @@
 ---
 ---
 
-// Tokyo Night color palette
-$tokyonight-bg:         #24283b;
-$tokyonight-bg-dark:    #1a1b26;
-$tokyonight-bg-light:   #2f3549;
-$tokyonight-fg:         #bb9af7;
-$tokyonight-fg-dark:    #565f89;
-$tokyonight-blue:       #7aa2f7;
-$tokyonight-cyan:       #7dcfff;
-$tokyonight-green:      #73daca;
-$tokyonight-orange:     #ff9e64;
-$tokyonight-red:        #f7768e;
-$tokyonight-purple:     #bb9af7;
-$tokyonight-yellow:     #e0af68;
-$tokyonight-border:     #292e42;
+// ============================================================
+// Neon & Noise — Palette
+// Tokyo Night Storm, rebranded.
+// ============================================================
+
+$gangnam-night:      #24283b;
+$last-train-home:    #1a1b26;
+$neon-fog:           #2f3549;
+$neon-lilac:         #bb9af7;
+$smoke-slate:        #565f89;
+$cold-sake:          #7aa2f7;
+$hologram-haze:      #7dcfff;
+$soju-charm:         #73daca; // after Chamisul 참이슬
+$whiskey-glow:       #ff9e64;
+$red-light-district: #f7768e;
+$paper-lantern:      #e0af68;
+$bar-rail:           #292e42;
+$black-taxi:         #2e3c64; // canonical Tokyo Night Storm bg_visual
+
+// ============================================================
+// Semantic roles — change these to reskin without touching rules
+// ============================================================
+
+// Surfaces
+$background:       $gangnam-night;
+$surface-dark:     $last-train-home;
+$surface-lifted:   $neon-fog;
+
+// Text
+$foreground:       $neon-lilac;
+$foreground-muted: $smoke-slate;
+
+// Links
+$link:             $red-light-district;
+$link-hover:       $paper-lantern;
+$link-visited:     $soju-charm;
+
+// Headings
+$heading:          $soju-charm;   // .post-title and .post-content headings
+$heading-alt:      $neon-lilac;   // bare h1-h6 outside post content
+
+// Nav
+$nav-hover:        $hologram-haze;
+
+// Structural
+$rule:             $bar-rail;
+$blockquote-rule:  $cold-sake;
+
+// Inline code
+$inline-code:      $red-light-district;
+
+// Selection
+$selection-bg:     $black-taxi;
+
+// ============================================================
 
 @import "minima";
 
 // Base
 body {
-  background-color: $tokyonight-bg;
-  color: $tokyonight-fg;
+  background-color: $background;
+  color: $foreground;
   font-family: 'Inter', sans-serif;
 }
 
@@ -31,11 +72,11 @@ h1, h2, h3, h4, h5, h6,
 .post-content h3,
 .post-content h4 {
   font-family: 'Bebas Neue', sans-serif;
-  color: $tokyonight-green;
+  color: $heading;
 }
 
 .post-title {
-  color: $tokyonight-green;
+  color: $heading;
 }
 
 .site-title {
@@ -44,31 +85,31 @@ h1, h2, h3, h4, h5, h6,
 
 // Links
 a {
-  color: $tokyonight-red;
+  color: $link;
   font-weight: bold;
 
   &:visited {
-    color: $tokyonight-green;
+    color: $link-visited;
     font-weight: normal;
   }
 
   &:hover,
   &:visited:hover {
-    color: $tokyonight-yellow;
+    color: $link-hover;
   }
 }
 
 // Header
 .site-header {
-  background-color: $tokyonight-bg-dark;
+  background-color: $surface-dark;
   border-top: none;
-  border-bottom: 1px solid $tokyonight-border;
+  border-bottom: 1px solid $rule;
   padding: 0;
 }
 
 .site-header-banner {
   text-align: center;
-  background-color: $tokyonight-bg-dark;
+  background-color: $surface-dark;
 }
 
 .site-header-image {
@@ -85,126 +126,127 @@ a {
 
 .site-title,
 .site-title:visited {
-  color: $tokyonight-fg;
+  color: $foreground;
 }
 
 .site-nav .page-link {
-  color: $tokyonight-fg;
+  color: $foreground;
 
   &:hover {
-    color: $tokyonight-cyan;
+    color: $nav-hover;
   }
 }
 
 // Footer
 .site-footer {
-  background-color: $tokyonight-bg-dark;
-  border-top: 1px solid $tokyonight-border;
-  color: $tokyonight-fg-dark;
+  background-color: $surface-dark;
+  border-top: 1px solid $rule;
+  color: $foreground-muted;
 }
 
 .footer-col-wrapper {
-  color: $tokyonight-fg-dark;
+  color: $foreground-muted;
 }
 
-// Headings
+// Bare headings (lower specificity — .post-content headings above still win)
 h1, h2, h3, h4, h5, h6 {
-  color: $tokyonight-fg;
+  color: $heading-alt;
 }
 
 
 .post-link {
-  color: $tokyonight-red;
+  color: $link;
 
   &:hover {
-    color: $tokyonight-yellow;
+    color: $link-hover;
   }
 }
 
 // Post metadata
 .post-meta {
-  color: $tokyonight-fg-dark;
+  color: $foreground-muted;
 }
 
 // Inline code
 code {
-  background-color: $tokyonight-bg-light;
-  color: $tokyonight-red;
-  border: 1px solid $tokyonight-border;
+  background-color: $surface-lifted;
+  color: $inline-code;
+  border: 1px solid $rule;
   border-radius: 4px;
 }
 
 // Code blocks
 div.highlighter-rouge,
 figure.highlight {
-  background-color: $tokyonight-bg-dark;
-  border: 1px solid $tokyonight-border;
+  background-color: $surface-dark;
+  border: 1px solid $rule;
   border-radius: 6px;
 }
 
 .highlighter-rouge .highlight,
 .highlight {
-  background-color: $tokyonight-bg-dark;
+  background-color: $surface-dark;
 }
 
 pre.highlight {
-  background-color: $tokyonight-bg-dark;
-  color: $tokyonight-fg;
+  background-color: $surface-dark;
+  color: $foreground;
 }
 
 pre code {
   background-color: transparent;
-  color: $tokyonight-fg;
+  color: $foreground;
   border: none;
 }
 
-// Syntax highlighting (Tokyo Night)
+// Syntax highlighting — Tokyo Night → Rouge mapping.
+// Palette-direct here: changing any of these is a theme decision, not a brand one.
 .highlight {
-  background-color: $tokyonight-bg-dark;
+  background-color: $surface-dark;
 
-  .k, .kd, .kn, .kp, .kr, .kt { color: $tokyonight-purple; }   // keywords
-  .s, .s1, .s2, .sb, .sc, .sh, .sx { color: $tokyonight-green; } // strings
-  .c, .c1, .cm, .cp, .cs { color: $tokyonight-fg-dark; font-style: italic; } // comments
-  .nf, .nx { color: $tokyonight-blue; }                          // function names
-  .na { color: $tokyonight-cyan; }                                // attributes
-  .nb { color: $tokyonight-cyan; }                                // builtins
-  .nc { color: $tokyonight-yellow; }                              // class names
-  .no { color: $tokyonight-orange; }                              // constants
-  .mi, .mf, .mh, .mo { color: $tokyonight-orange; }              // numbers
-  .o, .ow { color: $tokyonight-cyan; }                            // operators
-  .p { color: $tokyonight-fg; }                                   // punctuation
-  .nn { color: $tokyonight-blue; }                                // module names
-  .err { color: $tokyonight-red; background-color: transparent; } // errors
+  .k, .kd, .kn, .kp, .kr, .kt { color: $neon-lilac; }                    // keywords
+  .s, .s1, .s2, .sb, .sc, .sh, .sx { color: $soju-charm; }               // strings
+  .c, .c1, .cm, .cp, .cs { color: $smoke-slate; font-style: italic; }    // comments
+  .nf, .nx { color: $cold-sake; }                                         // function names
+  .na { color: $hologram-haze; }                                          // attributes
+  .nb { color: $hologram-haze; }                                          // builtins
+  .nc { color: $paper-lantern; }                                          // class names
+  .no { color: $whiskey-glow; }                                           // constants
+  .mi, .mf, .mh, .mo { color: $whiskey-glow; }                            // numbers
+  .o, .ow { color: $hologram-haze; }                                      // operators
+  .p { color: $neon-lilac; }                                              // punctuation
+  .nn { color: $cold-sake; }                                              // module names
+  .err { color: $red-light-district; background-color: transparent; }    // errors
 }
 
 // Blockquotes
 blockquote {
-  color: $tokyonight-fg-dark;
-  border-left: 4px solid $tokyonight-blue;
+  color: $foreground-muted;
+  border-left: 4px solid $blockquote-rule;
 }
 
 // Horizontal rules
 hr {
-  border-color: $tokyonight-border;
+  border-color: $rule;
 }
 
 // Tables
 table {
-  color: $tokyonight-fg;
-  border-color: $tokyonight-border;
+  color: $foreground;
+  border-color: $rule;
 
   th {
-    background-color: $tokyonight-bg-light;
-    border-color: $tokyonight-border;
+    background-color: $surface-lifted;
+    border-color: $rule;
   }
 
   td {
-    border-color: $tokyonight-border;
+    border-color: $rule;
   }
 }
 
 // Selection
 ::selection {
-  background-color: #283457;
-  color: $tokyonight-fg;
+  background-color: $selection-bg;
+  color: $foreground;
 }
