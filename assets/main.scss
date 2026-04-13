@@ -250,3 +250,8 @@ table {
   background-color: $selection-bg;
   color: $foreground;
 }
+
+// Hide visible RSS link — feed is still auto-discoverable via <link rel="alternate">
+.rss-subscribe {
+  display: none;
+}
