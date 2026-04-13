@@ -56,6 +56,8 @@ George is the reason macOS developers had a pleasant terminal for the entire dec
 
 The reason I started looking for alternatives a few weeks ago wasn't that iTerm2 got worse — it was that I started using Claude Code a lot, and the streaming output caused some flickering. It's almost certainly more of a Claude Code-meets-streaming-terminal issue than an iTerm2 bug, but I still needed a solution, and looking around led me here. None of this is a knock on George. iTerm2 has been *fine* for me for ten years, and for most people, it still is.
 
+One note since I'll be tossing around "GPU-rendered" a lot in the sections below: iTerm2 *does* have a GPU renderer — a Metal backend that George added around 2018 — but it's opt-in and iTerm2 spent most of its life as a CPU-rendered terminal. That's different from the other terminals I'm about to talk about, which were designed around the GPU from the beginning. iTerm2 is the last of the "classic" macOS terminal emulators. Everything after it is GPU-native by default.
+
 iTerm2 is the quiet workhorse. Nobody writes Medium articles about it. It just keeps working for millions of people, for free, because George kept showing up.
 
 ## Alacritty (January 6, 2017)
