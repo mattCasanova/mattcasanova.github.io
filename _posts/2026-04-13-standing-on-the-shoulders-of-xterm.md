@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Standing on the Shoulders of xterm"
+date: 2026-04-13
 tags: [terminal, history, open-source, alacritty, kitty, wezterm, ghostty, iterm2, warp]
 ---
 
@@ -10,7 +11,24 @@ Today I want to sit with that for a minute, and do some roll call for the people
 
 Because every single crate I'm composing Flux out of — `wgpu`, `cosmic-text`, `alacritty_terminal`, `portable-pty`, `vte` — exists because somebody else spent years of their life on this exact problem before me. I didn't invent any of it. I didn't even come up with the *approach*. I'm just stitching together other people's work and adding blocks on top. That's worth being honest about.
 
-This is a brief history of the open-source terminal emulators that got us here. It's not exhaustive. It's not academic. It's me looking at my own `Cargo.toml` and trying to trace the lineage back to the humans who made it possible.
+This is a brief history of the open-source terminal emulators that got us here. It's not exhaustive. It's not academic. It's me looking at my own `Cargo.toml` and trying to trace the lineage back to the dudes who made it possible.
+
+## Before We Start: What the Hell Is a VTE?
+
+A quick glossary, because terminal land is an acronym soup and I have to keep looking these up myself:
+
+- **TTY** — short for *teletypewriter*, the physical machines from the 1920s that sent text over wires. In modern Unix, "tty" just means "terminal device." When you type `who` and see `tty1`, that's the name of a terminal attached to your session. The name survives because Unix is old and Unix doesn't rename things.
+- **PTY** — *pseudo-terminal*. A software pair of fake terminal devices — a "master" and a "slave" — that let a program act like it's talking to a physical terminal even though it's not. When you run `zsh` inside your terminal emulator, the shell thinks it's talking to a real TTY; it's actually writing to the slave side of a PTY, and your terminal emulator is reading from the master side. Every modern terminal creates and manages PTYs. Flux uses the `portable-pty` crate for this.
+- **VT100 / VT220 / VT** — *Video Terminal*, the DEC hardware terminals from the late 70s and early 80s that defined the escape sequence vocabulary everyone still uses. When your terminal advertises itself as `xterm-256color`, it's really saying "I understand the xterm extensions to the DEC VT220 standard, and I support 256 colors."
+- **ANSI codes** — shorthand for the ANSI X3.64 / ECMA-48 escape sequence standard that grew out of VT100. When you see someone "print in color with ANSI codes," they mean sequences like `\x1b[31m` for red. Modern xterm extensions go way beyond the original ANSI spec, but everybody still calls them ANSI codes.
+- **VTE** — in the Rust world, this is [the `vte` crate](https://crates.io/crates/vte), which parses those escape sequences. The name comes from the GNOME project's `libvte` (Virtual Terminal Emulator library), which was the first widely-used C implementation of the same thing. So "VTE" is both a general concept ("the thing that parses terminal escape sequences") and a specific crate.
+- **CSI / OSC** — *Control Sequence Introducer* (`ESC [`) and *Operating System Command* (`ESC ]`) — the two most common prefix bytes that start an escape sequence. CSI handles things like cursor movement and colors. OSC handles things like setting the window title, defining hyperlinks, or — crucially for Warp-style terminals — **OSC 133**, which shell integration scripts use to mark where prompts and command output begin and end. OSC 133 is how you get blocks.
+
+If you only remember one thing from this glossary: a terminal emulator is the GUI app that reads bytes off a PTY and paints them on screen, while parsing escape sequences that were specified in the late 70s for hardware that no longer exists. Modern GPU terminals are, essentially, very fast VT220 emulators with extra features duct-taped to the side.
+
+**Fun side note:** you might notice "tty" hiding in the names of **Kitty**, **Alacri*tty***, and **Ghos*tty***. That's not an accident — it's a running joke in terminal land, because every terminal emulator ends up dealing with `/dev/tty` one way or another. Each one works the pun slightly differently (Alacritty leans on the word "alacrity" meaning briskness; Kitty goes cute and names its plugins "kittens"; Ghostty is just "Ghost" + "tty") but the "tty" at the end is intentional in all three. And in a completely unrelated coincidence, **Jim Ge*tty*s** — one of the people behind xterm back in 1984 — literally has "tty" in his last name. Some people are just built for this work.
+
+OK, now the history.
 
 ## The Ground Floor: xterm (1984)
 
@@ -34,7 +52,9 @@ The first "iTerm" started in 2002, written by Fabian, as an attempt to give macO
 
 In 2010, **George Nachman** forked it into **iTerm2**. iTerm2 rapidly became *the* macOS terminal for developers — split panes, full-screen mode, Growl notifications, profiles, instant replay, and eventually tmux integration and GPU rendering. It's written in Objective-C and is still maintained and shipping as of January 2026.
 
-George is the reason macOS developers had a pleasant terminal for the entire decade between 2010 and 2020. He built iTerm2 mostly alone for most of its existence. When I finally got fed up with iTerm2's flickering with Claude Code a few weeks ago and started looking for alternatives, it wasn't because iTerm2 was bad. It was because it had been *fine* for me for ten years and was starting to struggle with an AI tool that does 60fps streaming.
+George is the reason macOS developers had a pleasant terminal for the entire decade between 2010 and 2020. He built iTerm2 mostly alone for most of its existence, and I've been using it basically that entire time. I've spent a ridiculous amount of time tweaking themes and keybindings in iTerm2 — enough that I even built and published [my own Tokyo Night Storm profile](https://github.com/mattCasanova/tokyo-night-storm-iterm-profile) for it. iTerm2 is not a terminal I'm mad at. iTerm2 is the terminal I grew up in.
+
+The reason I started looking for alternatives a few weeks ago wasn't that iTerm2 got worse — it was that I started using Claude Code a lot, and the streaming output caused some flickering. It's almost certainly more of a Claude Code-meets-streaming-terminal issue than an iTerm2 bug, but I still needed a solution, and looking around led me here. None of this is a knock on George. iTerm2 has been *fine* for me for ten years, and for most people, it still is.
 
 iTerm2 is the quiet workhorse. Nobody writes Medium articles about it. It just keeps working for millions of people, for free, because George kept showing up.
 
@@ -48,12 +68,12 @@ Joe eventually stepped back from maintaining it. The project now runs under **Ki
 
 Alacritty's lasting gift to the ecosystem is two crates:
 
-- **[`vte`](https://crates.io/crates/vte)** — the ANSI escape sequence parser. 50 million downloads. If you're writing anything that touches terminal output in Rust, you are probably using `vte`, directly or transitively. Flux does.
+- **[`vte`](https://crates.io/crates/vte)** — the ANSI escape sequence parser. 50 million downloads. If you're writing anything that touches terminal output in Rust, you are probably using `vte`, directly or transitively.
 - **[`alacritty_terminal`](https://crates.io/crates/alacritty_terminal)** — the terminal state machine itself, extracted as a reusable library. Grid, selection, scrollback, mode flags, the works.
 
-I don't have a VT/ANSI parser in Flux. I have Joe Wilm's parser. It's the right call — the parser is one of those subtle, gnarly problems where 98% of correct isn't enough, because vim and tmux and fzf will find the 2% you missed within 30 seconds of launching them. [I learned that the hard way yesterday](/2026/04/12/define-interesting/).
+Flux uses both. I don't have my own ANSI parser and I don't have my own terminal state machine — I have Joe Wilm's. It's the right call, because the parser is one of those subtle, gnarly problems where 98% of correct isn't enough. vim and tmux and fzf will find the 2% you missed within 30 seconds of launching them. [I learned that the hard way yesterday](/2026/04/12/define-interesting/).
 
-I owe a lot to that crate. Flux literally doesn't run without it.
+Flux literally doesn't run without that crate.
 
 ## Kitty (2017)
 
@@ -85,7 +105,7 @@ I want to be the kind of person Wez is, but I am aware of how much of what Wez i
 
 ## Ghostty (2022, public 2024)
 
-[Ghostty](https://ghostty.org/) is **Mitchell Hashimoto's** project. Mitchell is the co-founder of HashiCorp (Vagrant, Packer, Terraform, Consul, Nomad, Vault — if you've deployed cloud infrastructure in the last decade, you've used something Mitchell helped build). The Ghostty repo was created on March 29, 2022. It ran as a private beta for a long time while Mitchell tinkered. The public 1.0 shipped at the end of December 2024.
+[Ghostty](https://ghostty.org/) is **Mitchell Hashimoto's** project. Mitchell is the co-founder of HashiCorp (Vagrant, Packer, Terraform, Consul, Nomad, Vault — if you've deployed cloud infrastructure in the last decade, you've used something Mitchell helped build). The Ghostty repo was created on March 29, 2022 — which, minor aside, is also my birthday. Absolutely no significance. Just amused me while researching this. It ran as a private beta for a long time while Mitchell tinkered, and the public 1.0 shipped at the end of December 2024.
 
 Ghostty is written in Zig, which is a choice. It uses Metal on macOS, OpenGL on Linux, and native platform UI toolkits — AppKit on macOS, GTK on Linux — for the window chrome. That last bit matters more than people realize: most modern GPU terminals look like they escaped from a game engine because they use `winit` or similar. Ghostty looks *native*, because it's actually using the OS widgets.
 
@@ -97,18 +117,32 @@ Ghostty's 1.0 launch was a big deal. Within a couple of months it had more GitHu
 
 **Zach Lloyd** founded [Warp](https://www.warp.dev/) in June 2020. Former Principal Engineer at Google, former interim CTO at TIME. Built in Rust. Closed source. VC-backed — Sequoia led a $50M Series B in June 2023, on top of earlier rounds totaling $23M. The pitch was *"the terminal for the 21st century"* — command blocks, a real input editor, AI command suggestions, shared team runbooks, the works.
 
-Warp is what Flux is trying to be an open-source alternative to. I want to be clear about that: I'm not mad at Warp. I think Warp is a genuinely great product. Command blocks are the single best UX improvement to the terminal in decades, and they nailed the implementation. The input editor is clean. The block collapsing, the exit-code indicators, the one-click copy of just the output — all of it is *correct*.
+Warp is what Flux is trying to be an open-source alternative to. I want to be clear about that: I'm not mad at Warp. I think Warp is a genuinely great product. Command blocks are the single best UX improvement to the terminal in decades, and they nailed the implementation. The input editor is awesome. The block collapsing, the exit-code indicators, the one-click copy of just the output — all of it is *badass*. And the autocomplete freaking rocks. It's a badass terminal.
 
 The things that make Warp not work for me personally are:
 
-1. It's closed source, which means I can't ship it at Meta, I can't modify it, and I can't see what it's doing.
-2. It phones home by default, and while the telemetry can be turned off, the fact that it exists at all disqualifies it for a lot of companies' security policies.
-3. It requires an account, and that account is tied to cloud features that I don't need.
-4. It's VC-backed, which means its incentives are eventually going to diverge from mine.
+1. **It phones home by default.** The telemetry can be turned off, but the fact that it exists at all disqualifies it for a lot of company security policies — including where I work. I can't use it at work. Meta doesn't allow it. That alone is a non-starter.
+2. **It requires an account.** I don't really want to put account credentials into a terminal where I'm SSHing into prod servers and `cat`-ing my environment files. In the end, it's just hard to trust.
 
 None of that makes Warp *bad.* Warp is the obvious paid option if you want a modern terminal and don't care about the above. But my whole argument for Flux is that the feature set Warp ships should exist in open source, without any of the strings attached. A VC-backed company can't ship that — their investors don't want them to. That's not a moral failing, it's just math. Open source is the only place that thing can live.
 
 Also: Zach Lloyd and the Warp team obviously know what they're doing. The fact that Warp is built in Rust is not a coincidence — they looked at Alacritty and said "we want that performance." The fact that they support tmux control mode for SSH is not a coincidence — they looked at iTerm2 and said "we want that integration." Warp is a commercial product standing on the same open source shoulders I'm standing on.
+
+## What Am I Getting Myself Into?
+
+Somewhere in the middle of writing this post, reading about how long each of these projects has taken, I said it out loud: *what am I getting myself into?*
+
+Here's the answer, near as I can tell: **years.** Not weeks. Not months. Years of nights and weekends, where the rewarding parts are few and the polish tail is long. Alacritty took years. Kitty is Kovid Goyal's decade-plus project. WezTerm's README literally says *"this is a spare time project"* and has for years. iTerm2 has been George Nachman's on-and-off personal project since 2010. Ghostty sat in private beta for roughly three years before Mitchell Hashimoto shipped 1.0. Every single one of these is a slow grind.
+
+I'm not hearing *"this is an eight-week sprint."* I'm hearing *"this is a thing you're going to be working on in 2028."*
+
+The money angle is its own honest conversation, and I'll be quick about it: almost nobody makes real money on an open-source terminal. GitHub Sponsors, Patreon, Open Collective — they add up to a nice dinner a month if you're lucky. Most of the people on that list above either (a) have a successful second project that funds them — Kovid has Calibre, for instance — (b) had a tech exit that means they don't need the revenue — Mitchell and HashiCorp — or (c) just keep a day job and build it nights and weekends like Wez does. Nobody's getting rich.
+
+That's not why they do it. It's why they *can* do it. But the reason they *keep* doing it is that they love the problem enough to show up anyway. Nights. Weekends. Years.
+
+I have a day job. I am not post-HashiCorp anyone. Flux is going to be option (c) — nights, weekends, and whatever energy I have left. That's fine. I'm not doing this for the tips, and I wasn't going to be anyway. But reading that list of maintainers was a moment. You start to see *why* every one of these projects takes so long. It's not *just* that terminals are hard. It's that the only people who finish them are the ones passionate enough to keep showing up — year after year, whether the world is paying attention or not.
+
+That's what I'm getting myself into. And yeah, I'm still in.
 
 ## The Other People I Owe
 
@@ -119,6 +153,12 @@ A few projects I haven't given their due yet but should:
 - **[cosmic-text](https://github.com/pop-os/cosmic-text)** — System76's text shaping engine, written in pure Rust. Handles what HarfBuzz does in C. Flux's [glyph atlas from 88 Miles Per Second](/2026/04/12/88-miles-per-second/) calls into cosmic-text for every glyph. System76 built it for their cosmic-epoch desktop environment, but the whole Rust ecosystem gets to use it because they open-sourced it.
 - **[wgpu](https://github.com/gfx-rs/wgpu)** — the cross-platform GPU abstraction over Metal, Vulkan, and DX12. Maintained by the gfx-rs working group. Without wgpu I'd be writing three rendering backends instead of one.
 - **[Oh My Zsh](https://ohmyz.sh/)** — yes, it's a zsh config framework, not a terminal emulator. But every developer I know who "has a nice terminal" has `oh-my-zsh` installed somewhere. It's been maintained for over a decade, originally by Robby Russell, and it's the reason a huge chunk of the developer population has a colorful, git-aware, useful prompt instead of `$`. Thank you, Robby.
+
+### The Maintainers I'm Not Naming
+
+One thing I want to call out: I've been crediting founders in this post because they're the names I know, but every one of these projects has a long list of people who kept it going after the original author moved on. **Kirill Chibisov** and **Christian Dürr** have been driving Alacritty for years after Joe Wilm stepped back. **Thomas Dickey** has maintained xterm — a 1984 C codebase — since the mid-90s, which is thirty years of keeping *xterm* shipping. The gfx-rs working group behind `wgpu` is a whole team. The cosmic-text contributors. The community that keeps Oh My Zsh current across a decade of zsh changes.
+
+Starting a project is glamorous. Maintaining one isn't. And maintaining one for 15+ years is a thankless job that nobody writes history posts about, which is why I wanted to at least mention it here. If you're one of the people in that category and I didn't name you by name: thank you. I owe you too.
 
 ## The Common Thread
 
@@ -142,6 +182,4 @@ The thing I want Flux to be — open-source, GPU-accelerated, block-based, zero 
 
 If you're using Flux someday, you're using Joe Wilm's parser, Wez Furlong's PTY, System76's text shaper, and gfx-rs's GPU layer, with a Flux-shaped wrapper around it. Including the bugs. Including the polish. Including the decade of work that went into making those crates good enough to trust.
 
-I'm just the new name on the box.
-
-Time for a drink, and one poured for all of you.
+All I have to do is keep showing up. Thanks to everyone who has.
