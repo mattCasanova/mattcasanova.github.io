@@ -21,7 +21,7 @@ Same principle as the [DI post](/2026/04/14/bad-advice-roll-your-own-di/) and th
 
 Years ago I worked at William Hill on a mobile app that had, at various times, **multiple** third-party loggers and analytics SDKs all active at once. Off the top of my head I remember:
 
-- **Sentry** (or similar — I keep calling it "Century" from memory, need to double-check the actual tool) — for crash reporting.
+- **Sentry** — for crash and error reporting.
 - **Airship** — for push notifications and user engagement tracking.
 - **Firebase Analytics** — for event analytics.
 - **Facebook Analytics** — for the ad-attribution side of the house.
@@ -102,7 +102,7 @@ Or:
   - Post #3: Mockito (`_drafts/bad-advice-dont-use-mockito.md`)
   - Post #4: **this post**
 - **Series tagline:** "minimize the blast radius when something changes." This could be the unifying phrase across all four posts. Consider adding it as a callback to the series home page or the first paragraph of each future post.
-- **Verify the tool names** — I called one of the loggers "Sentry" because I'm guessing from memory. The actual stack at William Hill might have been different. Before publishing, either (a) double-check the exact tool names, or (b) hedge the sentence by saying "a handful of analytics and crash-reporting SDKs — the usual suspects in mobile" without naming specific products. The hedge is safer and the point lands just as hard.
+- **Tool names confirmed:** Sentry (errors), Airship (push), Firebase Analytics (events), Facebook Analytics (ad attribution). If memory surfaces additional tools from that era, add them when expanding the draft.
 - **William Hill is past-employer territory** — fair to name per the blog's current-employer rule. V-Shred same.
 - **Do not name Meta or any current-project stack in detail.** Per the current-employer rule.
 - **Drop Meta entirely from the `StorageService` section** — the current project example can be described as "a mobile app I'm working on" without attribution. Reader doesn't need to know it's for my day job or a side project.
