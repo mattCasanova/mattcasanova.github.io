@@ -255,3 +255,27 @@ table {
 .rss-subscribe {
   display: none;
 }
+
+// Series label under post titles
+.series-label {
+  font-size: 0.9rem;
+  color: $foreground-muted;
+  font-style: italic;
+  margin-top: 0.25rem;
+  margin-bottom: 1.5rem;
+
+  a {
+    color: $link;
+    font-weight: bold;
+
+    &:visited {
+      color: $link-visited;
+      font-weight: normal;
+    }
+
+    &:hover,
+    &:visited:hover {
+      color: $link-hover;
+    }
+  }
+}
