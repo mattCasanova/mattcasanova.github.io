@@ -91,12 +91,20 @@ Something like:
 
 ## Notes
 
-- **Series order:** This is post #3 in the informal arc. Post #1 is [Just Roll Your Own DI](/2026/04/14/bad-advice-roll-your-own-di/), already shipped. Post #2 is the Mockito seed (`bad-advice-dont-use-mockito.md`). This post should open with a back-reference to the Mockito one — something like "In the last post I argued that if you need Mockito, your code isn't testable. This post is about the pattern that creates most of the demand for Mockito in the first place: singletons." That's the natural lead-in because the Mockito post already forward-references this one.
+- **Series order (revised):** This is now post **#2** in the informal arc — moved up from #3.
+  - Post #1: [Just Roll Your Own DI](/2026/04/14/bad-advice-roll-your-own-di/) (shipped) — "put services in your AppContainer, wire them through constructors"
+  - Post #2: **this post** — "don't use singletons. You don't need them. The DI post already gave you a better version."
+  - Post #3: Mockito (see `_drafts/bad-advice-dont-use-mockito.md`) — "Mockito exists to paper over the problems singletons create"
+  - Post #4: Third-party wrapping (see `_drafts/bad-advice-wrap-third-parties.md`) — same principle applied to external dependencies
+- **The suggested opener** is a forward reference from the DI post, not a back-reference from Mockito: *"In the last post I walked through how to roll your own dependency injection — services on an AppContainer, passed through constructors, everything testable because everything is behind an interface. This post is the flip side of that argument: **don't use singletons.** If you've built the AppContainer pattern, you literally don't need them."*
+- **Core move:** frame singletons as "the thing you reach for when you haven't built a service container yet." The DI post gave you the container. This post says: now that you have it, singletons are redundant *and* dangerous.
 - **Anecdote is hypothetical.** The `CurrentUser` / social app multi-account story is a hypothetical composite, not a specific employer story. Per the blog's current-employer rule, keep it that way. Do not name Meta or any internal product.
 - **Possible alt titles:**
   - "A Confident Dose of Bad Advice: Stop Using Singletons" — direct
   - "A Confident Dose of Bad Advice: The `getInstance()` Trap" — technical
   - "A Confident Dose of Bad Advice: The Singleton Is a Lie" — dramatic
   - "A Confident Dose of Bad Advice: Everything Is a Singleton Until It Isn't" — the punchline framing
-- Cross-link to the [DI post](/2026/04/14/bad-advice-roll-your-own-di/) for the facade pattern description, and to the Mockito post for the "Mockito treats the symptom, singletons are the disease" beat.
-- The series arc closes here, but the underlying argument (program against interfaces, always) could easily generate more series entries — e.g., "Stop Using Reflection to Construct Things," "Your Service Locator Is a Singleton in a Trench Coat," etc. Leave the door open.
+- **The blast-radius framing** is the unifying thread across all the series entries: every architectural pattern in these posts is about minimizing the blast radius when something changes. Default parameters on functions, interfaces on services, DI over singletons, wrappers over third parties — all the same principle. "Minimize the blast radius when something changes" could be the tagline for the whole series. Consider opening the post with it.
+- **Hit the blast-radius point hard.** The real cost of a singleton isn't that it's ugly today — it's that when you *do* need to change it, you're potentially touching hundreds of files. That's the lesson worth hammering, even harder than the testability point. Call sites pile up for years against the convenience of "just import the singleton," and then the day comes when you need to swap it or add a second variant, and you discover you own 300 files of coupled code.
+- Cross-link forward to the Mockito and third-party wrapping posts when they exist.
+- **Possible concrete example:** the old William Hill logger story (Sentry, Airship, Firebase, Facebook Analytics — all accessed as third-party singletons, all had to be ripped out or swapped when requirements changed). That belongs in the third-party wrapping post, but can be cross-referenced from this one as "here's the pattern I've seen repeatedly — see the next post for more on this specifically."

@@ -59,15 +59,15 @@ My current employer has a general internal guideline against Mockito-style class
 
 ### The deeper connection
 
-This is actually the same argument as the [DI post](/2026/04/14/bad-advice-roll-your-own-di/) — and it's the same argument as the next post in this series will be, about singletons. All three are pointing at the same underlying mistake from different angles:
+This is actually the third beat in a three-post argument that all points at the same underlying mistake from different angles:
 
-- **Dagger/Hilt + concrete class injection** (the DI post) — skips the interface boundary at wiring time.
-- **Mockito** (this post) — papers over the missing interface at test time.
-- **Singletons** (the next post) — bakes the missing interface into the architecture so deeply you can't reach it anymore.
+- **[Dagger/Hilt + concrete class injection](/2026/04/14/bad-advice-roll-your-own-di/)** — skipping the interface boundary at wiring time.
+- **Singletons** (the post before this one) — baking the missing interface into the architecture so deeply you can't reach it anymore.
+- **Mockito** (this post) — papering over both of the above at test time.
 
 All three are the same mistake: **optimizing for the convenience of the person writing code today at the cost of the person maintaining it later.** The fix is the same for all three: program against interfaces, pass fakes in tests, and the "convenience" problems you were trying to solve disappear.
 
-I'll get to singletons next, because they're the root cause of most of the times people reach for Mockito in the first place. When the framework tells you "you can mock that concrete class," that's usually because the class in question is a singleton that the test code can't construct or replace. The mocking framework is treating a symptom. The next post is about the disease.
+Mockito is where the bill comes due. If you followed the advice in the DI post (every service behind an interface, wired through constructors) and the singletons post (don't use `getInstance()`, you already have a container), you *genuinely never need Mockito*. The whole reason you'd reach for it is that you took shortcuts earlier and now need a way to get around them at test time. When the framework tells you "you can mock any class," that's usually because the class in question was either a singleton you couldn't construct from test code, or a concrete class you injected without an interface. The mocking framework is treating the symptom of the architecture choices you made one and two steps back.
 
 ## Possible closing hook
 
@@ -75,10 +75,15 @@ I'll get to singletons next, because they're the root cause of most of the times
 
 ## Notes
 
-- **Series order:** This is post #2 in the informal arc. Post #1 is [Just Roll Your Own DI](/2026/04/14/bad-advice-roll-your-own-di/), already shipped. Post #3 is the Singletons seed (`bad-advice-singletons.md`), which forward-references as "the next post in this series" from the deeper-connection section above.
-- Cross-link to the singletons post as the next in the series when that post ships. Update the forward reference ("I'll get to singletons next") to a hyperlink.
-- Back-link from the DI post? Optional. The DI post already works standalone. Might add a "see also" footer to it after the Mockito post goes live.
-- Maybe title variants:
+- **Series order (revised):** This is now post **#3** in the informal arc — moved from #2.
+  - Post #1: [Just Roll Your Own DI](/2026/04/14/bad-advice-roll-your-own-di/) (shipped)
+  - Post #2: Singletons (`_drafts/bad-advice-singletons.md`)
+  - Post #3: **this post** — lands harder because readers have already seen the DI and singletons arguments, so "Mockito is where the bill comes due" makes concrete sense
+  - Post #4: Third-party wrapping (`_drafts/bad-advice-wrap-third-parties.md`)
+- **Suggested opener** is a back-reference to the first two posts: *"In the last two posts I said 'program against interfaces' and 'don't use singletons.' This post is what happens if you ignore both of those."*
+- When ready to ship, update the inline references in the deeper-connection section — the link for "the post before this one" in the bullet list should become a real link once the singletons post goes live.
+- Back-link from the DI post? Optional. The DI post already works standalone. Might add a "see also" footer to it after the singletons and Mockito posts go live.
+- **Possible title variants:**
   - "Don't Use Mockito" — direct
   - "Mockito Is a Crutch" — punchier
   - "The Mockito Trap" — framing
