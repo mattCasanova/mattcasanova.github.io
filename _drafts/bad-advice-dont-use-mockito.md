@@ -59,13 +59,15 @@ My current employer has a general internal guideline against Mockito-style class
 
 ### The deeper connection
 
-This is actually the same argument as the [singletons post](./bad-advice-singletons.md) and the [DI post](/2026/04/14/bad-advice-roll-your-own-di/):
+This is actually the same argument as the [DI post](/2026/04/14/bad-advice-roll-your-own-di/) — and it's the same argument as the next post in this series will be, about singletons. All three are pointing at the same underlying mistake from different angles:
 
-- **Singletons** hide dependencies and prevent replacement.
-- **Concrete class injection (via Dagger or Hilt or anything else)** skips the interface boundary.
-- **Mockito** lets you paper over both problems with test-time magic.
+- **Dagger/Hilt + concrete class injection** (the DI post) — skips the interface boundary at wiring time.
+- **Mockito** (this post) — papers over the missing interface at test time.
+- **Singletons** (the next post) — bakes the missing interface into the architecture so deeply you can't reach it anymore.
 
-All three are the same mistake: **optimizing for the convenience of the person writing code today at the cost of the person maintaining it later.** The fix is the same for all three: program against interfaces, pass fakes in tests, and the "convenience" problem you were trying to solve disappears.
+All three are the same mistake: **optimizing for the convenience of the person writing code today at the cost of the person maintaining it later.** The fix is the same for all three: program against interfaces, pass fakes in tests, and the "convenience" problems you were trying to solve disappear.
+
+I'll get to singletons next, because they're the root cause of most of the times people reach for Mockito in the first place. When the framework tells you "you can mock that concrete class," that's usually because the class in question is a singleton that the test code can't construct or replace. The mocking framework is treating a symptom. The next post is about the disease.
 
 ## Possible closing hook
 
@@ -73,11 +75,13 @@ All three are the same mistake: **optimizing for the convenience of the person w
 
 ## Notes
 
-- Cross-link to the singletons post and the DI post when they exist.
+- **Series order:** This is post #2 in the informal arc. Post #1 is [Just Roll Your Own DI](/2026/04/14/bad-advice-roll-your-own-di/), already shipped. Post #3 is the Singletons seed (`bad-advice-singletons.md`), which forward-references as "the next post in this series" from the deeper-connection section above.
+- Cross-link to the singletons post as the next in the series when that post ships. Update the forward reference ("I'll get to singletons next") to a hyperlink.
+- Back-link from the DI post? Optional. The DI post already works standalone. Might add a "see also" footer to it after the Mockito post goes live.
 - Maybe title variants:
   - "Don't Use Mockito" — direct
   - "Mockito Is a Crutch" — punchier
   - "The Mockito Trap" — framing
   - "If You Need Mockito, Your Code Isn't Testable Yet" — thesis as title
 - Mention that this applies equally to iOS equivalents (OCMock, Mockingbird, Cuckoo, etc.) — same argument, different language.
-- Anonymize or drop the Meta internal guideline reference depending on how comfortable I am talking about work.
+- **Drop the Meta internal guideline reference entirely.** Per the blog's current-employer rule, don't mention Meta as a source of anecdotes. The Mockito argument stands without it — it's a general industry guideline at a lot of places, not unique to any one company.
