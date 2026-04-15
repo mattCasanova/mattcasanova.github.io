@@ -17,9 +17,9 @@ Same principle as the [DI post](/2026/04/14/bad-advice-roll-your-own-di/) and th
 
 ## Things to expand on
 
-### The William Hill story
+### The story that taught me this
 
-Years ago I worked at William Hill on a mobile app that had, at various times, **multiple** third-party loggers and analytics SDKs all active at once. Off the top of my head I remember:
+Years ago I worked on a mobile app that had, at various times, **multiple** third-party loggers and analytics SDKs all active at once. Off the top of my head I remember:
 
 - **Sentry** — for crash and error reporting.
 - **Airship** — for push notifications and user engagement tracking.
@@ -28,7 +28,7 @@ Years ago I worked at William Hill on a mobile app that had, at various times, *
 
 None of them were hidden behind interfaces. Each SDK was imported directly into the files that needed it, and each SDK exposed itself as a singleton — `SomeThing.getInstance()` or `SomeThing.shared` — that you just called wherever. This is the default shape of almost every mobile SDK. They ship that way because it's easy to adopt in 30 seconds, but the cost is hidden until the day you need to change something.
 
-Over my time at the company, we ended up:
+Over my time on that project, we ended up:
 
 1. **Swapping one analytics provider for another** because a business decision or a pricing change or a privacy requirement shifted. Every call site had to be rewritten. Not complicated work, just *tedious* — you'd grep for `FBAnalytics.log(...)`, you'd find 80 places, you'd rewrite every one.
 2. **Adding a *second* analytics provider alongside the first** (because some team wanted different metrics in a different tool). Now every event needed to be logged twice. You either go update all 80 sites *again*, or you wrap it in a helper, at which point you might as well have wrapped it in an interface to begin with.
@@ -38,15 +38,15 @@ By the time I left, the pattern was obvious: every time a third-party SDK touche
 
 ### The V-Shred lesson
 
-When I went to V-Shred in 2019 and got the greenfield Android project, this was lesson #1 I brought with me. Before I wrote a single feature, I built a `LoggingService` interface and routed every logger call in the app through it. On the inside, the service fanned out to Firebase and Facebook Analytics (and later other tools), but on the outside, every view model, every repository, every error handler just called `logging.event(...)` or `logging.error(...)` and that was it.
+When I went to V-Shred in 2019 and got a greenfield Android project, this was lesson #1 I brought with me. Before I wrote a single feature, I built a `LoggingService` interface and routed every logger call in the app through it. On the inside, the service fanned out to Firebase and Facebook Analytics (and later other tools), but on the outside, every view model, every repository, every error handler just called `logging.event(...)` or `logging.error(...)` and that was it.
 
 The result: when we added a new analytics dependency, I updated *one file.* When we changed how errors were tagged with the current user, I updated *one file.* When we wanted to route different severity levels to different backends, I updated *one file.* Every feature team could add instrumentation without knowing or caring what was on the other side of the interface. That small investment — maybe a half-day of work at the start of the project — paid for itself the first month.
 
 This wasn't a full DI container yet (that came on the current project), but the principle was there: **the logger is yours, not the third party's.** Everything the third party provides is an implementation detail of your wrapper.
 
-### The current project: wrapping storage
+### The side project: wrapping storage
 
-On the mobile app I'm working on now, the same principle applies to storage. I have a `StorageService` interface that looks something like:
+On the mobile side project I'm working on now, the same principle applies to storage. I have a `StorageService` interface that looks something like:
 
 ```kotlin
 interface StorageService {
@@ -103,13 +103,12 @@ Or:
   - Post #4: **this post**
 - **Series tagline:** "minimize the blast radius when something changes." This could be the unifying phrase across all four posts. Consider adding it as a callback to the series home page or the first paragraph of each future post.
 - **Tool names confirmed:** Sentry (errors), Airship (push), Firebase Analytics (events), Facebook Analytics (ad attribution). If memory surfaces additional tools from that era, add them when expanding the draft.
-- **William Hill is past-employer territory** — fair to name per the blog's current-employer rule. V-Shred same.
-- **Do not name Meta or any current-project stack in detail.** Per the current-employer rule.
-- **Drop Meta entirely from the `StorageService` section** — the current project example can be described as "a mobile app I'm working on" without attribution. Reader doesn't need to know it's for my day job or a side project.
+- **Don't name the first-story employer.** The point of the anecdote is the pattern, not the company. V-Shred is fine to name — it's past-employer territory and the lesson is "I built it right on a new project."
+- **The `StorageService` example is from a side project**, not Meta. Frame it that way explicitly. Per the current-employer rule, any "app I'm working on now" on this blog means the side project unless otherwise noted.
 - **Possible alt titles:**
   - "A Confident Dose of Bad Advice: Always Wrap Your Third Parties" — direct
   - "A Confident Dose of Bad Advice: Never Import an SDK Directly" — stronger thesis
   - "A Confident Dose of Bad Advice: You Don't Own That Logger" — the ownership framing
   - "A Confident Dose of Bad Advice: Wrap It Before You Ship It" — punchy
 - **The blast-radius framing should close the post.** Tie it back to the rest of the series. This is where the "minimize the blast radius" tagline gets its cleanest articulation.
-- Consider a concrete numbers callout if I can find one — e.g. "swapping analytics tools at William Hill would have touched roughly 80 files; if it had been behind a wrapper, it would have touched 1."
+- Consider a concrete numbers callout if I can find one — e.g. "swapping analytics tools on that project would have touched roughly 80 files; if it had been behind a wrapper, it would have touched 1."
