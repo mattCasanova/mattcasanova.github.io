@@ -159,7 +159,7 @@ The fix isn't *"make smarter decisions."* You don't know enough in year one to b
 
 Instead of reaching for the Singleton Pattern, do what I did in the DI post:
 
-1. Define a service **interface** (`SessionService`, `AuthService`, `DeviceService`, etc.).
+1. Define a service **interface** (`AuthService`, `StorageService`, `DeviceService`, etc.).
 2. Put one **implementation** of it on your `AppContainer` as a lifetime-scoped instance. It lives as long as the app, but it's not globally accessible — you have to ask the container for it.
 3. If nearly every class needs it and passing it through five layers is genuinely annoying, add a thin **facade** (`Log.e(...)`, `FF.isEnabled(...)`, `Device.current()`) that configures itself from the container at app startup. The facade looks like a singleton at the call site. The thing it delegates to is fully swappable.
 4. Tests pass fakes to the container. Production code passes real implementations. Everything is still swappable end-to-end because **the facade itself holds no state** — it just forwards.

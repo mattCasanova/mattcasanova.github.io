@@ -78,7 +78,7 @@ This isn't Mockito's fault, strictly. You can write bad tests with any framework
 
 ## It creates false confidence
 
-You see 90% coverage. You see green checkmarks. You ship. Then production breaks at runtime because the real `SessionService` had a subtle bug that your mocked `SessionService` never had — because the mock returns whatever canned response the test told it to, and nobody was auditing whether the canned response matched the real service's actual behavior.
+You see 90% coverage. You see green checkmarks. You ship. Then production breaks at runtime because the real `AuthService` had a subtle bug that your mocked `AuthService` never had — because the mock returns whatever canned response the test told it to, and nobody was auditing whether the canned response matched the real service's actual behavior.
 
 Mockito's convenience makes you lazy about integration tests, because the unit tests *feel* like they cover everything. They don't. They cover exactly what you told them to cover, which is almost always *"the code path I was thinking about when I wrote the test."* The stuff that breaks in production is the stuff you weren't thinking about.
 
@@ -114,7 +114,7 @@ The pattern I prefer is the same one from [the DI post](/2026/04/14/bad-advice-r
 Here's what a fake looks like:
 
 ```kotlin
-class FakeSessionService : SessionService {
+class FakeAuthService : AuthService {
     var loginCallCount = 0
     var lastLoginEmail: String? = null
     var loginResult: User = User(id = 1, name = "Fake")
@@ -135,16 +135,16 @@ class FakeSessionService : SessionService {
 }
 ```
 
-That's the whole file. Maybe 20 lines. It's a real Kotlin class. It implements the real interface. It has observable state the test can assert against directly — `fake.loginCallCount` instead of `verify(mockSession).login(...)`. And when you refactor `SessionService.login` to add a parameter, the compiler tells you the fake needs updating too, because the fake is a real implementation of a real interface and the compiler treats it like one.
+That's the whole file. Maybe 20 lines. It's a real Kotlin class. It implements the real interface. It has observable state the test can assert against directly — `fake.loginCallCount` instead of `verify(mockSession).login(...)`. And when you refactor `AuthService.login` to add a parameter, the compiler tells you the fake needs updating too, because the fake is a real implementation of a real interface and the compiler treats it like one.
 
 Your test becomes:
 
 ```kotlin
 @Test
 fun `login updates current user`() {
-    val fake = FakeSessionService()
+    val fake = FakeAuthService()
     fake.loginResult = User(id = 42, name = "Matt")
-    val viewModel = LoginViewModel(sessionService = fake)
+    val viewModel = LoginViewModel(authService = fake)
 
     viewModel.login("matt@example.com", "password")
 
@@ -164,7 +164,7 @@ The fake version requires you to write 20 lines of Kotlin that a first-year engi
 
 Yes. There's some boilerplate. Each interface needs a corresponding fake. You write it once.
 
-And here's the part where the calculus has changed in the last two years: **you don't even write it anymore.** You tell Claude *"make me a fake implementation of `SessionService` with call counters for every method and settable return values"* and Claude produces it in two seconds. Same deal with Cursor, Copilot, whatever you're using. Mechanical, pattern-driven code generation is exactly the kind of task AI coding tools are already extremely good at.
+And here's the part where the calculus has changed in the last two years: **you don't even write it anymore.** You tell Claude *"make me a fake implementation of `AuthService` with call counters for every method and settable return values"* and Claude produces it in two seconds. Same deal with Cursor, Copilot, whatever you're using. Mechanical, pattern-driven code generation is exactly the kind of task AI coding tools are already extremely good at.
 
 I'm not making a lazy joke about this being easier. I'm saying the last remaining excuse for Mockito — *"but hand-writing fakes is tedious boilerplate"* — has collapsed to zero. It was never a strong excuse. It's now a non-excuse.
 

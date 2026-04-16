@@ -49,8 +49,8 @@ class AppContainer(context: Context) {
             logging = logging,
         )
 
-    val sessionService: SessionService =
-        DefaultSessionService(
+    val authService: AuthService =
+        DefaultAuthService(
             apiService = apiService,
             secureStorage = secureStorage,
             storage = storage,
@@ -79,16 +79,16 @@ class AppContainer(context: Context) {
 
     // ViewModel Factories
     fun makeLoginViewModel(): LoginViewModel =
-        LoginViewModel(sessionService = sessionService)
+        LoginViewModel(authService = authService)
 
     fun makeRegisterViewModel(): RegisterViewModel =
-        RegisterViewModel(sessionService = sessionService)
+        RegisterViewModel(authService = authService)
 
     private fun setupSessionHooks() {
-        sessionService.onLogin = { user ->
+        authService.onLogin = { user ->
             logging.setUser(user.id.toString(), user.email)
         }
-        sessionService.onLogout = {
+        authService.onLogout = {
             logging.clearUser()
         }
     }
@@ -101,7 +101,7 @@ And here's the view model side:
 
 ```kotlin
 class LoginViewModel(
-    private val sessionService: SessionService,
+    private val authService: AuthService,
 ) : ViewModel() {
     val email = MutableStateFlow("")
     val password = MutableStateFlow("")
@@ -112,7 +112,7 @@ class LoginViewModel(
         viewModelScope.launch {
             _isLoading.value = true
             try {
-                sessionService.login(email.value, password.value)
+                authService.login(email.value, password.value)
                 _didLoginSuccessfully.value = true
             } catch (e: ApiError.ValidationError) {
                 _fieldErrors.value = e.errors
@@ -125,23 +125,23 @@ class LoginViewModel(
 }
 ```
 
-Notice what's missing: `@HiltViewModel`, `@Inject`, `@Singleton`, `@Provides`, `@Binds`, `@ActivityScoped`, `@AssistedInject`, any module classes, any component interfaces, any `KAPT` code generation, any generated glue files you can't read. The view model extends the real `androidx.lifecycle.ViewModel` from Android's lifecycle library. It takes a `SessionService` through its constructor. The `AppContainer` creates it through `makeLoginViewModel()`. That's the whole wiring story.
+Notice what's missing: `@HiltViewModel`, `@Inject`, `@Singleton`, `@Provides`, `@Binds`, `@ActivityScoped`, `@AssistedInject`, any module classes, any component interfaces, any `KAPT` code generation, any generated glue files you can't read. The view model extends the real `androidx.lifecycle.ViewModel` from Android's lifecycle library. It takes a `AuthService` through its constructor. The `AppContainer` creates it through `makeLoginViewModel()`. That's the whole wiring story.
 
-- **Testable:** pass a fake `SessionService` (that implements the same interface) in your unit test. Done.
+- **Testable:** pass a fake `AuthService` (that implements the same interface) in your unit test. Done.
 - **Scoped:** the lifetime of any dependency is just "as long as the thing that holds it." App-wide? Put it on `AppContainer`. Per-view-model? Construct it in the factory method. Session-scoped? Use lifecycle hooks (I'll get to this in a minute).
 - **Debuggable:** put a breakpoint anywhere in the construction chain and walk through the whole dependency graph.
 - **Portable:** if you ever *do* need to migrate to Hilt, every service is already behind an interface and already takes dependencies through its constructor. The migration is mechanical.
 
-And before someone in the comments says it: **this is still compile-time graph validation.** The main sales pitch for Dagger is "we catch missing or misconfigured bindings at compile time instead of at runtime." Hand-rolled containers get that for free from the language. Look at the code again — the `AppContainer`'s `init` block constructs `DefaultApiService(tokenProvider = ..., logging = logging)`. If I forget the `logging` argument, Kotlin's compiler refuses to build. If I pass the wrong type, the compiler refuses to build. If I try to use `sessionService` before it's constructed, the compiler refuses to build. I'm not wiring this up through reflection or annotation processing — I'm writing actual code that actually runs, and the type system is the validator. Dagger generates code that provides this guarantee. Hand-rolled containers just *are* the code that provides it. Same outcome, no build-step magic, better error messages when something's wrong ("you forgot a parameter" vs. "Dagger cannot find a binding for `LoggingService` in the `AppContainer` component graph").
+And before someone in the comments says it: **this is still compile-time graph validation.** The main sales pitch for Dagger is "we catch missing or misconfigured bindings at compile time instead of at runtime." Hand-rolled containers get that for free from the language. Look at the code again — the `AppContainer`'s `init` block constructs `DefaultApiService(tokenProvider = ..., logging = logging)`. If I forget the `logging` argument, Kotlin's compiler refuses to build. If I pass the wrong type, the compiler refuses to build. If I try to use `authService` before it's constructed, the compiler refuses to build. I'm not wiring this up through reflection or annotation processing — I'm writing actual code that actually runs, and the type system is the validator. Dagger generates code that provides this guarantee. Hand-rolled containers just *are* the code that provides it. Same outcome, no build-step magic, better error messages when something's wrong ("you forgot a parameter" vs. "Dagger cannot find a binding for `LoggingService` in the `AppContainer` component graph").
 
 And while I'm on rebuttals: **you also still get per-view-model scoping, for free.** The other big Dagger/Hilt sales pitch is the `@Scoped` family of annotations — `@Singleton`, `@ActivityScoped`, `@ViewModelScoped`, and so on — which control how long each dependency lives. The implicit claim is that hand-rolled containers force everything to be a singleton because you construct everything once in the `AppContainer` constructor. That's wrong. It's wrong because you control the factory methods.
 
-Right now, in the `AppContainer` above, every service happens to be a singleton because every `makeXViewModel` passes the container's singleton instance in. But that's my choice, not a limitation of the approach. If I wanted a per-view-model `SessionService` — say, because I want each login attempt to get a fresh session state that dies when the view model dies — I'd just change the factory to construct a new one:
+Right now, in the `AppContainer` above, every service happens to be a singleton because every `makeXViewModel` passes the container's singleton instance in. But that's my choice, not a limitation of the approach. If I wanted a per-view-model `AuthService` — say, because I want each login attempt to get a fresh session state that dies when the view model dies — I'd just change the factory to construct a new one:
 
 ```kotlin
 fun makeLoginViewModel(): LoginViewModel =
     LoginViewModel(
-        sessionService = DefaultSessionService(
+        authService = DefaultAuthService(
             apiService = apiService,
             secureStorage = secureStorage,
             storage = storage,
@@ -157,26 +157,26 @@ Look at the `AppContainer` code again and notice the `setupSessionHooks()` call 
 
 ```kotlin
 private fun setupSessionHooks() {
-    sessionService.onLogin = { user ->
+    authService.onLogin = { user ->
         logging.setUser(user.id.toString(), user.email)
     }
-    sessionService.onLogout = {
+    authService.onLogout = {
         logging.clearUser()
     }
 }
 ```
 
-That's it. I don't have a separate `SessionContainer` that gets constructed at login and nulled out at logout. I don't need one. The `SessionService` exposes `onLogin` and `onLogout` callbacks, and at app startup every service that cares about user lifecycle subscribes to those events exactly once. When a user logs in, the hooks fire and the subscribed services react. When they log out, the hooks fire again and the services reset. Services that don't care about user lifecycle never have to know any of this machinery exists.
+That's it. I don't have a separate `SessionContainer` that gets constructed at login and nulled out at logout. I don't need one. The `AuthService` exposes `onLogin` and `onLogout` callbacks, and at app startup every service that cares about user lifecycle subscribes to those events exactly once. When a user logs in, the hooks fire and the subscribed services react. When they log out, the hooks fire again and the services reset. Services that don't care about user lifecycle never have to know any of this machinery exists.
 
 The insight underneath this is: **"session scope" is just event subscription with extra steps.** A session-scoped service isn't really one that "lives during the session" — it's one that *cares about* session events. Frameworks handle that by creating and destroying service instances on login/logout. Hand-rolled handles it by having a singleton that reacts to events. Same behavior, different implementation, dramatically different amount of glue code.
 
-If my app grows to the point where I need to actually reset service state on logout — cache eviction, scratchpad clearing, auth token wiping, whatever — I add a line to the `onLogout` hook. The SessionService doesn't need to know about the services that care about it. The services that care don't need to know about each other. And I still don't need Dagger.
+If my app grows to the point where I need to actually reset service state on logout — cache eviction, scratchpad clearing, auth token wiping, whatever — I add a line to the `onLogout` hook. The AuthService doesn't need to know about the services that care about it. The services that care don't need to know about each other. And I still don't need Dagger.
 
 ### The real insight: interfaces, not frameworks
 
 Here's the thing that's more important than anything I just said about hand-rolling your container:
 
-**Every service in that `AppContainer` is behind an interface.** `LoggingService`, `SessionService`, `ApiService`, `StorageService`, `SecureStorage`, `UserRepository`, `FeatureService`. The `AppContainer` constructs the `Default*` concrete classes, but everything *else* in the codebase — every view model, every repository, every other service — only ever sees the interface.
+**Every service in that `AppContainer` is behind an interface.** `LoggingService`, `AuthService`, `ApiService`, `StorageService`, `SecureStorage`, `UserRepository`, `FeatureService`. The `AppContainer` constructs the `Default*` concrete classes, but everything *else* in the codebase — every view model, every repository, every other service — only ever sees the interface.
 
 This is the thing that makes the code testable. Not Dagger. Not Hilt. *Interfaces.*
 
@@ -200,7 +200,7 @@ Here's something I've done on past projects that I haven't done yet on this one 
 
 In previous apps I've put *view models* behind interfaces too, so the views only ever interact with a `LoginViewModelProtocol` instead of `LoginViewModel`. That way every layer of the app, all the way out to the view, is testable in isolation — the view doesn't depend on the concrete view model, it depends on an interface that any mock can satisfy.
 
-I haven't done that for this project. Not because I don't believe in the pattern, but because **my view models are currently thin.** They contain almost no business logic of their own — they defer to the session service, the API service, the repositories, and the feature service. There's not much worth testing in isolation at the view model layer. A unit test for `LoginViewModel` right now would mostly just assert "it called `sessionService.login(email, password)`," which is a tautology.
+I haven't done that for this project. Not because I don't believe in the pattern, but because **my view models are currently thin.** They contain almost no business logic of their own — they defer to the session service, the API service, the repositories, and the feature service. There's not much worth testing in isolation at the view model layer. A unit test for `LoginViewModel` right now would mostly just assert "it called `authService.login(email, password)`," which is a tautology.
 
 But here's the discipline that matters: **the reason I can get away with thin view models is that I push the real logic down into services and repositories,** which *are* behind interfaces, and *are* properly testable. If a view model starts accumulating complex logic — multi-step workflows, validation rules, branching state machines — that's a signal that the logic should be pulled out into a service (or a repository, or a use case, depending on the domain) where it has a proper home and a proper interface.
 
@@ -223,7 +223,7 @@ public final class AppContainer {
     public let keychain: SecureStorage
     public let storage: StorageService
     public var apiService: APIService
-    public let sessionService: SessionService
+    public let authService: AuthService
     public let featureService: FeatureService
     public let logging: LoggingService
     public let staleness: StalenessTracker
@@ -243,7 +243,7 @@ public final class AppContainer {
             logging: logging
         )
 
-        sessionService = DefaultSessionService(
+        authService = DefaultAuthService(
             apiService: apiService,
             keychain: keychain,
             storage: storage,
@@ -256,7 +256,7 @@ public final class AppContainer {
     }
 
     public func makeLoginViewModel() -> LoginViewModel {
-        LoginViewModel(sessionService: sessionService)
+        LoginViewModel(authService: authService)
     }
     // ... other factories ...
 }
