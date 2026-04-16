@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "House Rules: I Know What the Other Four Letters Are"
+title: "House Rules: I Know the Other Four Letters"
 series: house-rules
 tags: [architecture, solid, mobile, ios, swift, opinion]
 ---
