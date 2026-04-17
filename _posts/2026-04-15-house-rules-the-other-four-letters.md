@@ -229,4 +229,4 @@ I'll get to them.
 
 *The guy at the bar was right, by the way. Most people don't know the other four. But now you know the first one — the real version, not the bumper-sticker version. Four more to go.*
 
-*I didn't write them, but those are the rules.*
+*I didn't write 'em, but those are the rules.*
