@@ -137,6 +137,18 @@ a {
   }
 }
 
+// Mobile hamburger menu — override Minima's default white/grey
+@media screen and (max-width: 600px) {
+  .site-nav {
+    background-color: $surface-dark;
+    border: 1px solid $rule;
+
+    .menu-icon > svg {
+      fill: $red-light-district;
+    }
+  }
+}
+
 // Footer
 .site-footer {
   background-color: $surface-dark;
