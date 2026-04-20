@@ -89,11 +89,17 @@ Small feature. Changes the visual density of a scene a lot.
 
 ## None of This Is Unity
 
-Quick clarification, because the videos make this look simpler than it is: **LiquidMetal2D is not Unity, it is not Unreal, it is not a particle API wrapped around someone else's engine.** It's 100% Swift, 100% Metal, written from scratch. The particle system you're looking at is built on the same renderer, the same shader protocol, the same component system I've been posting about for the last two months.
+Just so you know — these videos make this look a lot simpler than it is.
 
-This month alone that includes [broadphase collision](/2026/04/12/the-right-algorithm-still-slower/), [the component system](/2026/04/18/flying-motorcycles-movable-buildings/), and [the multi-shader refactor](/2026/04/19/render-pass-strikes-back/) that made it possible to drop in a particle shader without touching the renderer. Five years of slow work, and a couple of months of fast work on top of it.
+This is not Unity.
 
-Yes, Claude helped. But this isn't a prompt-an-engine-into-existence story. The foundation is mine.
+This is not Unreal.
+
+This is not someone else's engine.
+
+It's 100% Swift, 100% Metal, written from scratch. The particle system you're looking at is built on the same renderer, the same shader protocol, the same component system I've been posting about for the last two months — [the component system](/2026/04/18/flying-motorcycles-movable-buildings/) and [the multi-shader refactor](/2026/04/19/render-pass-strikes-back/) are what made it possible to drop in a particle shader without touching the renderer. Five years of slow work, and a couple of months of fast work on top of it.
+
+You've seen particles a million times before. Looks can be deceiving.
 
 ## They're a Component, Of Course
 
