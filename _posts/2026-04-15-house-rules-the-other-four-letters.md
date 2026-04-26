@@ -5,6 +5,8 @@ series: house-rules
 tags: [architecture, solid, mobile, ios, swift, opinion]
 ---
 
+*SOLID series: **S** → [O](/2026/04/17/house-rules-whatever-happens-happens/) → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → I → D*
+
 A few jobs ago, my team had one of those team-event nights — drinks at a bar after work, the kind where half the team orders water and the other half pretends they're going to have "just one." I was probably three or four drinks in. Maybe more — I forget.
 
 I was definitely the only person at the table who'd committed to the evening.

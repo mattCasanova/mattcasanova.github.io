@@ -5,6 +5,8 @@ series: house-rules
 tags: [architecture, solid, opinion, gamedev, swift, metal]
 ---
 
+*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → **O** → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → I → D*
+
 To be honest, I almost skipped this one.
 
 I sat down to write about the Open-Closed Principle and my first thought was *"I don't think I have an example of this."* When I need a new API call, I add it to the existing code. I've got this huge class that holds all my API calls — the interfaces are separate now, we'll get to that in a later post — but the code? I just add another method. When I need another API call, or another string in my array, same thing. Open the file, add it, move on.

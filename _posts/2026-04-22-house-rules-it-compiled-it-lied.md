@@ -5,6 +5,8 @@ series: house-rules
 tags: [architecture, solid, opinion, swift, mobile]
 ---
 
+*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → [O](/2026/04/17/house-rules-whatever-happens-happens/) → **L** → I → D*
+
 Last time I [rattled off the SOLID principles](/2026/04/15/house-rules-the-other-four-letters/), it was at a work dinner, several drinks in.
 
 Years before that one and before my current job, I was interviewing at a different big company. Sometime during the loop, the interviewer asked me to name the SOLID principles. Not explain them. Just name them. It kind of felt like a gotcha. You could hear it in his tone — the tone you use when you don't expect someone to know the answer.
