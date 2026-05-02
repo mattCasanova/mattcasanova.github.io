@@ -12,5 +12,11 @@ twitter_username: RealMattNova
 
 permalink: /:year/:month/:day/:title/
 
+header_pages:
+  - about.md
+  - series/bad-advice.md
+  - series/house-rules.md
+  - series/nightcap.md
+
 markdown: kramdown
 highlighter: rouge
