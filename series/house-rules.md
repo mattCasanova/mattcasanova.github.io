@@ -13,8 +13,8 @@ Not contrarian takes — just the stuff I've been teaching, building on, and arg
 - **S** — [I Know the Other Four Letters](/2026/04/15/house-rules-the-other-four-letters/)
 - **O** — [Whatever Happens Happens](/2026/04/17/house-rules-whatever-happens-happens/)
 - **L** — [It Compiled. It Lied.](/2026/04/22/house-rules-it-compiled-it-lied/)
-- **I** — coming next
-- **D** — coming
+- **I** — [I Suppressed the Linter](/2026/05/05/house-rules-i-suppressed-the-linter/)
+- **D** — [I Already Wrote This One](/2026/05/05/house-rules-d/)
 
 ## All Posts
 
