@@ -10,6 +10,7 @@ plugins:
 github_username: mattcasanova
 twitter_username: RealMattNova
 linkedin_username: matt-casanova-2ab61312
+facebook_username: lazersquad
 
 permalink: /:year/:month/:day/:title/
 
