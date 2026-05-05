@@ -1,6 +1,7 @@
 ---
 layout: page
 title: "A Confident Dose of Bad Advice"
+nav_title: "Bad Advice"
 permalink: /series/bad-advice/
 ---
 

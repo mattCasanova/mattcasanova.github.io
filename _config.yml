@@ -15,10 +15,10 @@ facebook_username: lazersquad
 permalink: /:year/:month/:day/:title/
 
 header_pages:
-  - about.md
   - series/bad-advice.md
   - series/house-rules.md
   - series/nightcap.md
+  - about.md
 
 markdown: kramdown
 highlighter: rouge
