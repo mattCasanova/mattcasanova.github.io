@@ -87,6 +87,6 @@ If you don't use them, someone who does will eventually build what you could hav
 
 The noise is getting louder. There's more AI slop every day — more generated apps, more generated art, more generated everything. That's not going to stop.
 
-But the signal still matters. Your taste, your judgment, your experience — that's the signal. And now you have tools that amplify it.
+But the signal still matters. Your [taste](/2026/05/01/think-mcfly-think/), your judgment, your experience — that's the signal. And now you have tools that amplify it.
 
 Be the signal.

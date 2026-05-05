@@ -178,7 +178,7 @@ I'll grant you one thing, grudgingly: **genuine legacy code, in the short term.*
 
 The other excuses I hear don't hold up:
 
-- *"Third-party libraries."* You shouldn't be unit-testing third-party libraries in the first place. You should be wrapping them behind an interface you own, and your unit tests should talk to the interface, not the library. I'll have a whole post on this next in the series.
+- *"Third-party libraries."* You shouldn't be unit-testing third-party libraries in the first place. You should be wrapping them behind an interface you own, and your unit tests should talk to the interface, not the library. I'll have a [whole post on this](/2026/04/15/bad-advice-wrap-your-vendors/) next in the series.
 - *"Framework integration points."* Why are you unit-testing the iOS framework? Or Sentry? Or Firebase? You're not testing the framework. You're testing *your code that calls the framework,* and that code should be behind an interface like anything else.
 
 So the counter-argument really reduces to one thing: **legacy code that is genuinely expensive to refactor right now.** That's fair. I don't want to pretend otherwise. But *right now* is the operative phrase, and *right now* is changing fast.

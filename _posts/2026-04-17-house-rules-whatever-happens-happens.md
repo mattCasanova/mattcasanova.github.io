@@ -5,7 +5,7 @@ series: house-rules
 tags: [architecture, solid, opinion, gamedev, swift, metal]
 ---
 
-*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → **O** → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → I → D*
+*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → **O** → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → [I](/2026/05/05/house-rules-i-suppressed-the-linter/) → D*
 
 To be honest, I almost skipped this one.
 
@@ -194,7 +194,7 @@ Each object produces its own uniform via `toUniform()`. The default implementati
 
 OCP on both sides — the renderer isn't coupled to a specific game object type, and it isn't coupled to a specific uniform type.
 
-I don't have a second shader yet. But when I do, I just:
+I don't have a second shader yet. But [when I do](/2026/04/19/render-pass-strikes-back/), I just:
 
 1. Load the new shader
 2. Subclass `GameObj` and override `toUniform()` to return the right uniform type
@@ -335,7 +335,7 @@ Whatever happens, happens.
 
 ---
 
-*This is the second entry in the **House Rules** series. Next up: the L. Liskov Substitution Principle, and why the scariest-sounding letter in SOLID is actually the simplest one once you stop being intimidated by the name.*
+*This is the second entry in the **House Rules** series. Next up: [the L](/2026/04/22/house-rules-it-compiled-it-lied/). Liskov Substitution Principle, and why the scariest-sounding letter in SOLID is actually the simplest one once you stop being intimidated by the name.*
 
 *So what have we learned so far? S: interfaces. O: interfaces. Want to guess what's coming next? Spoiler: interfaces.*
 

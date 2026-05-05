@@ -175,7 +175,7 @@ Components fix that too.
 
 With a component system, a `GameObj` can have a `GraphicsComponent` — or *more than one.* An `AlphaBlendGraphicsComponent` that knows how to pack data for the textured shader. A `WireframeGraphicsComponent` that knows how to pack data for a collision-bounds debug shader. The renderer can walk the objects twice — once for each component type — and do two render passes on the same object. Solid shaded ship on the first pass. Collision wireframe on top of it on the second.
 
-That's the next piece. I don't have it yet.[^3] But the foundation is there, which is the whole point of the component system — you can plug a new thing in without rebuilding the thing next to it.
+That's [the next piece](/2026/04/19/render-pass-strikes-back/). I don't have it yet.[^3] But the foundation is there, which is the whole point of the component system — you can plug a new thing in without rebuilding the thing next to it.
 
 Flying motorcycle. Movable building. Same problem. Same answer.
 

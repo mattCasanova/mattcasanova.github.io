@@ -95,7 +95,7 @@ The longer-term vision: blocks, tabs, split panes, themes, SSH with automatic tm
 
 ## Follow Along
 
-The code is at [github.com/mattcasanova/flux](https://github.com/mattcasanova/flux). I'll be blogging here about the specific challenges as I hit them — GPU text rendering, glyph atlas management, block detection, and whatever else turns out to be harder than I expected.
+The code is at [github.com/mattcasanova/flux](https://github.com/mattcasanova/flux). I'll be blogging here about the specific challenges as I hit them — GPU text rendering, [glyph atlas management](/2026/04/12/88-miles-per-second/), block detection, and whatever else turns out to be harder than I expected.
 
 If you're interested in an open-source Warp alternative, star the repo. If you want to help build it, even better.
 

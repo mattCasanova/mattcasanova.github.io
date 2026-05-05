@@ -39,7 +39,7 @@ It Fucking doesn't, actually.
 
 I read what they open-sourced and how. Long story short: I'm going to keep working on Flux. The thing I actually want still isn't what Warp is offering. I don't think the telemetry is going away. I don't think the bundled AI is going away. Not everyone needs AI built into their terminal — you can run Claude or any other agent against a clean open-source GPU terminal that doesn't phone home, and you don't have to pay for it.
 
-I'll have a longer post specifically about what changed and what didn't. Not tonight.
+I'll have a [longer post](/2026/05/05/warp-open-sourced-so-what/) specifically about what changed and what didn't. Not tonight.
 
 ### Also
 

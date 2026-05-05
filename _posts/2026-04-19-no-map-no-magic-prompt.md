@@ -171,7 +171,7 @@ To balance the ledger: this workflow is *energizing.* I'm more pumped about side
 
 ## Do More Art
 
-Mechanics got cheap. Taste got valuable. Art is the job.
+[Mechanics got cheap. Taste got valuable.](/2026/05/01/think-mcfly-think/) Art is the job.
 
 Every night shift — the side projects, the blog, the quiet hours between 9pm and midnight — is an argument for the same position Godin made in 2010. Don't compete on mechanics. Compete on art. Bring taste. Bring judgment. Build something somebody else wouldn't have built, and build it in a way that has your fingerprints on it.
 

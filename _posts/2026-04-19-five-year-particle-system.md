@@ -113,7 +113,7 @@ Compound interest on primitives you got right. You don't really notice it until 
 
 Five minutes into tweaking fire with the sliders, it stopped feeling like programming and started feeling like *design.* Drag the emission rate up. Shorten the lifetime. Flip to neon. Iterate. The engine handed me a dial and I kept turning it.
 
-Which made the next move obvious. The next thing LiquidMetal2D needs isn't another shader. It's a **particle configuration tool** — sliders, color pickers, live preview, save to JSON, ship the preset into your game. Pure-code engine with an actual visual editor beside it. That's the next post.
+Which made the next move obvious. The next thing LiquidMetal2D needs isn't another shader. It's a [**particle configuration tool**](/2026/04/22/patience-then-persistence/) — sliders, color pickers, live preview, save to JSON, ship the preset into your game. Pure-code engine with an actual visual editor beside it. That's the next post.
 
 ---
 

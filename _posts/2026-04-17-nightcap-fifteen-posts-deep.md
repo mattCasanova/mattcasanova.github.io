@@ -19,7 +19,7 @@ Turns out I can. Turns out I kind of can't stop.
 
 **Flux.** Decent progress. Less than I wanted. I had to [backtrack on the roadmap](/2026/04/13/vim-can-wait/) mid-week — I was polishing Vim rendering before the basics (paste, autocomplete, history) even worked. A terminal you can't type in is not a terminal. New roadmap is in. v0.2 is the daily-driver milestone. Vim polish is in v1.x where it belongs. Also: Rust is close enough to C++ that I can read it, far enough that every review doubles as a language lesson. Sessions take longer. That's the cost of the combo platter — new language *and* a project type I've never built before.
 
-**LiquidMetal2D.** The OCP post caught a real bug. I was writing about the `toUniform()` coupling, went to double-check the code, and found I'd only gone halfway on it back in 2020. Fixed it while writing the post. That's a new thing — post pushes the engine forward instead of just describing it. Still want particles. Particles can wait; I've been saying that for five years, they'll keep.[^1]
+**LiquidMetal2D.** The OCP post caught a real bug. I was writing about the `toUniform()` coupling, went to double-check the code, and found I'd only gone halfway on it back in 2020. Fixed it while writing the post. That's a new thing — post pushes the engine forward instead of just describing it. Still want particles. [Particles can wait](/2026/04/19/five-year-particle-system/); I've been saying that for five years, they'll keep.[^1]
 
 **Other side projects.** The iOS app and the web app behind it are making good progress. More to say later.
 

@@ -28,7 +28,7 @@ In my free time, I'm running three personal projects right now with Claude Code,
 
 I'm goofing off building some mobile apps — they're not really for anything, just side projects. But I've been doing mobile development since 2010 — my first shipped iOS game was [Sync-Ball](https://apps.apple.com/ca/app/sync-ball/id356277312), then Android starting around 2014 just before Android Studio launched. I know these platforms deeply. The classes, the patterns, the gotchas.
 
-When I started a new mobile project recently, I spent a full day just on the plan. Not writing code — explaining architecture. How I wanted the project organized. Why it needed to be modular from the start. Specifics like image caching strategies, using interfaces for service boundaries, whether to use Dagger/Hilt for dependency injection or roll our own (we rolled our own — it's actually easy for what we needed).
+When I started a new mobile project recently, I spent a full day just on the plan. Not writing code — explaining architecture. How I wanted the project organized. Why it needed to be modular from the start. Specifics like image caching strategies, using interfaces for service boundaries, whether to use Dagger/Hilt for dependency injection or roll our own (we [rolled our own](/2026/04/14/bad-advice-roll-your-own-di/) — it's actually easy for what we needed).
 
 Then I had Claude generate the scaffolding. The code generation was fast. But here's the thing — Claude still made design choices I wouldn't have. The structure wasn't quite modular enough. Some service boundaries were wrong.
 
@@ -52,7 +52,7 @@ I keep these separate deliberately. I don't want to pollute the coding context w
 
 [LiquidMetal2D](https://github.com/mattCasanova/LiquidMetal2D) is an open-source 2D game engine I built in Swift + Metal back in 2020. I hadn't touched it in five years. This year I revived it — I can work on it in parallel with the other projects, and it's just a fun thing to do.
 
-None of the improvements are groundbreaking — spatial grid collision, a composition-based component system, renderer API cleanup. These are basic patterns in 2026. I just never put them in before. But I knew I wanted them, and now I can spend 10-15 minutes explaining how I want a system designed and get a first draft of code in minutes. Stuff that would have taken me days or weeks — I'm getting working implementations I can review and tweak almost immediately.
+None of the improvements are groundbreaking — [spatial grid collision](/2026/04/12/the-right-algorithm-still-slower/), a [composition-based component system](/2026/04/18/flying-motorcycles-movable-buildings/), renderer API cleanup. These are basic patterns in 2026. I just never put them in before. But I knew I wanted them, and now I can spend 10-15 minutes explaining how I want a system designed and get a first draft of code in minutes. Stuff that would have taken me days or weeks — I'm getting working implementations I can review and tweak almost immediately.
 
 And that velocity is what gave me the confidence to start the terminal project. Before this, "build a GPU terminal emulator" would have sounded too ambitious for a side project.
 

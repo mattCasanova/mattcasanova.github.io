@@ -341,7 +341,7 @@ The collaboration worked the way I want it to work. Claude built the prototype f
 The atlas is in good shape now, but there's more game-engine-ifying to do:
 
 - **Color emoji atlas.** Currently I skip color glyphs. Need a second `Rgba8UnormSrgb` texture and a way to route glyphs between the two atlases — or bindless textures to keep it one draw call.
-- **Per-style caching.** Bold, italic, and regular should each have their own atlas regions. Right now I assume one weight/style globally.
+- **Per-style caching.** [Bold, italic, and regular](/2026/04/12/define-interesting/) should each have their own atlas regions. Right now I assume one weight/style globally.
 - **Dirty row tracking.** alacritty_terminal tells me which rows changed between frames. I should write only the dirty rows to the instance buffer via `queue.write_buffer` with an offset, instead of rebuilding the whole buffer every frame.
 - **Actual profiling.** The numbers in this post are estimates. I haven't sat down with a profiler yet. Every optimization in this post was guided by pattern recognition, not measurement. That's fine for the dramatic wins (HashMap fix) but not fine for the small ones (array vs HashMap). The next step is making sure my instincts match the numbers.
 

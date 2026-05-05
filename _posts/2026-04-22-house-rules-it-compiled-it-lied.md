@@ -5,7 +5,7 @@ series: house-rules
 tags: [architecture, solid, opinion, swift, mobile]
 ---
 
-*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → [O](/2026/04/17/house-rules-whatever-happens-happens/) → **L** → I → D*
+*SOLID series: [S](/2026/04/15/house-rules-the-other-four-letters/) → [O](/2026/04/17/house-rules-whatever-happens-happens/) → **L** → [I](/2026/05/05/house-rules-i-suppressed-the-linter/) → D*
 
 Last time I [rattled off the SOLID principles](/2026/04/15/house-rules-the-other-four-letters/), it was at a work dinner, several drinks in.
 
@@ -264,7 +264,7 @@ Knowing the rules is more important than any one job.
 
 ---
 
-*This is the third entry in the **House Rules** series. Next up: the I. Interface Segregation. My Detekt linter caught it. I told it to shut up. Turns out the linter was right and I was the cached HTTP client.*
+*This is the third entry in the **House Rules** series. Next up: [the I](/2026/05/05/house-rules-i-suppressed-the-linter/). Interface Segregation. My Detekt linter caught it. I told it to shut up. Turns out the linter was right and I was the cached HTTP client.*
 
 *Halfway through SOLID. So far the answer to all of them is "interfaces." I'll let you know if that changes.*
 

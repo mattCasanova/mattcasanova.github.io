@@ -168,7 +168,7 @@ The design plan that drove it lives in the repo: [`multi-shader-pipeline-support
 
 ---
 
-*This is Part Two of the component system arc. [Part One was Flying Motorcycles and Movable Buildings](/2026/04/18/flying-motorcycles-movable-buildings/). There probably won't be a Part Three. The component system isn't done paying off, but the next time a problem shows up that maps onto "per-object metadata a pass needs to read," I'll add another component, not another subclass.*
+*This is Part Two of the component system arc. [Part One was Flying Motorcycles and Movable Buildings](/2026/04/18/flying-motorcycles-movable-buildings/). There probably won't be a Part Three. The component system isn't done paying off, but the next time a problem shows up that maps onto "per-object metadata a pass needs to read," I'll add [another component](/2026/04/19/five-year-particle-system/), not another subclass.*
 
 *Components all the way down.*
 

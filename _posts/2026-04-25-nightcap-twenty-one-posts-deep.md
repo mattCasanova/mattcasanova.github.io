@@ -27,7 +27,7 @@ The pattern that keeps showing up: writing the post pushes the code forward.
 
 The [OCP post](/2026/04/17/house-rules-whatever-happens-happens/) caught a real coupling bug in the engine last week and got me halfway to making `GameObj` `final`. This week's [LSP post](/2026/04/22/house-rules-it-compiled-it-lied/) finished the job — by the time I'd written it, the inheritance escape hatch I was hedging about in the prose had already been closed in the engine.
 
-It's not just the engine, either. The upcoming Interface Segregation post is going to be a direct write-up of a fix I made in one of the apps. Some of the [Bad Advice](/series/bad-advice/) rants caught real issues there too. The pattern is bigger than any one project. **The blog is making the code better.**
+It's not just the engine, either. The upcoming [Interface Segregation post](/2026/05/05/house-rules-i-suppressed-the-linter/) is going to be a direct write-up of a fix I made in one of the apps. Some of the [Bad Advice](/series/bad-advice/) rants caught real issues there too. The pattern is bigger than any one project. **The blog is making the code better.**
 
 I think it's because writing publicly forces me to confront places I'm being lazy. Privately I can hand-wave a sloppy decision. Out loud, I have to either justify it or fix it — and most of the time the justification doesn't survive contact with the page.
 

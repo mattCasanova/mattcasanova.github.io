@@ -5,7 +5,7 @@ series: house-rules
 tags: [architecture, solid, mobile, ios, swift, opinion]
 ---
 
-*SOLID series: **S** → [O](/2026/04/17/house-rules-whatever-happens-happens/) → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → I → D*
+*SOLID series: **S** → [O](/2026/04/17/house-rules-whatever-happens-happens/) → [L](/2026/04/22/house-rules-it-compiled-it-lied/) → [I](/2026/05/05/house-rules-i-suppressed-the-linter/) → D*
 
 A few jobs ago, my team had one of those team-event nights — drinks at a bar after work, the kind where half the team orders water and the other half pretends they're going to have "just one." I was probably three or four drinks in. Maybe more — I forget.
 
@@ -227,7 +227,7 @@ I'll get to them.
 
 ---
 
-*This is the first entry in the **House Rules** series — the principles I actually build on, explained with the code I actually ship. Next up: the O. Open-Closed Principle, and why "open for extension, closed for modification" is the most misunderstood sentence in software engineering.*
+*This is the first entry in the **House Rules** series — the principles I actually build on, explained with the code I actually ship. Next up: [the O](/2026/04/17/house-rules-whatever-happens-happens/). Open-Closed Principle, and why "open for extension, closed for modification" is the most misunderstood sentence in software engineering.*
 
 *The guy at the bar was right, by the way. Most people don't know the other four. But now you know the first one — the real version, not the bumper-sticker version. Four more to go.*
 

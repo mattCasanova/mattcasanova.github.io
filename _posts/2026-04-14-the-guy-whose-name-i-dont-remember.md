@@ -65,7 +65,7 @@ And here's a small twist: I didn't even end up in the Bay Area. I ended up in Se
 
 Somewhere in the middle of onboarding, when I finally saw the actual numbers and the actual cost-of-living adjustments and the actual "how much of my salary is left over after rent" math, I remembered the guy at the gym. With his certainty. And his absolute cluelessness about the thing he was so confident about.
 
-If I'd listened to him, I wouldn't be at Meta. I wouldn't have this career. I wouldn't be [building a terminal emulator in Rust in my free time](/2026/04/13/vim-can-wait/) with the kind of professional stability that lets me do that. I'd be somewhere, probably fine, telling *my* version of the story about the job I almost applied for but the guy at the gym said not to.
+If I'd listened to him, I wouldn't be at Meta. I wouldn't have [this career](/2026/05/01/make-it-a-good-one/). I wouldn't be [building a terminal emulator in Rust in my free time](/2026/04/13/vim-can-wait/) with the kind of professional stability that lets me do that. I'd be somewhere, probably fine, telling *my* version of the story about the job I almost applied for but the guy at the gym said not to.
 
 I don't even remember his name.
 
