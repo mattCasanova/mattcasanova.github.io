@@ -10,12 +10,6 @@ plugins:
 github_username: mattcasanova
 twitter_username: RealMattNova
 
-minima:
-  social_links:
-    github: mattcasanova
-    twitter: RealMattNova
-    linkedin: matt-casanova-2ab61312
-
 permalink: /:year/:month/:day/:title/
 
 header_pages:
