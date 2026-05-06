@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "House Rules: D"
+date: 2026-05-06
 series: house-rules
 tags: [architecture, solid, opinion]
 ---
