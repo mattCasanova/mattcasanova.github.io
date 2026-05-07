@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "A Confident Dose of Bad Advice: Now Is Not the Time to Go Soft"
+title: "A Confident Dose of Bad Advice: Prove Them Wrong"
 series: bad-advice
 tags: [career, opinion, comp, learning]
 ---
