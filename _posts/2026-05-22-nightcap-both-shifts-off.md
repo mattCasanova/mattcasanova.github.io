@@ -9,6 +9,8 @@ It's 3pm on a Friday. I took the day off. The night too.
 
 Drink is poured. It's five o'clock somewhere.
 
+Actually — it's close enough to five o'clock *here*. I'm squinting at the clock and starting now.
+
 Almost two weeks since the last post — longest gap I've had on this blog. Same reason as [last time](/2026/05/09/nightcap-still-doing-it/), only more so. Meta has eaten the whole calendar. Day shift and night shift, both columns, every day.
 
 ### The Ledger
@@ -55,6 +57,6 @@ Could be a wash. Could save real money. Worth knowing the floor either way.
 
 I still owe you a builder-pattern writeup. I said two weeks ago I'd take a swing at *House Rules: Builder* the morning after Still Doing It. I did not. The refactor is still on my desk, still interesting, and I'm taking another swing this weekend. Pattern only, no codebase context. If it lands, you'll see it Sunday.
 
-For now: drink in hand, no PR queue, nobody paging me. Both shifts off. Drinking straight through. Five o'clock somewhere.
+For now: drink in hand, no PR queue, nobody paging me. Both shifts off. Drinking straight through. Squinting at the clock.
 
 Still flying.
