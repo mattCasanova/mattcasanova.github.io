@@ -31,7 +31,7 @@ Layoffs landed Wednesday. I [called them](/2026/05/06/bad-advice-prove-them-wron
 
 I wasn't on the list.
 
-Was it the weekends? I genuinely don't know. Probably not on its own — there are a lot of inputs that go into a list like that and most of them aren't visible from where I sit. But I choose to believe the weekends didn't hurt. The cost of being wrong about that is one Saturday. The cost of being right and not showing up was a much bigger number.
+Was it the weekends? I genuinely don't know. Probably not on its own — there are a lot of inputs that go into a list like that and most of them aren't visible from where I sit. But I choose to believe the weekends didn't hurt. The cost of being wrong about that is one Saturday. Or three weekends. Whatever. The cost of being right and not showing up was a much bigger number.
 
 So today I took off. Probably the first full day off in four weeks. Couch, drink, no laptop within arm's reach. The night shift is off too — drinking straight through to tomorrow.
 
