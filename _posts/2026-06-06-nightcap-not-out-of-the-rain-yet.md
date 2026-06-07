@@ -19,7 +19,7 @@ I took that vacation on the 22nd like I said. Spent most of it checking my phone
 
 **Flux / LiquidMetal2D.** Still backseat. Soon.
 
-**Blog.** I owe you a *House Rules: Builder* post. I [promised it "Sunday"](/2026/05/22/nightcap-both-shifts-off/) two weeks ago and that Sunday came and went. But the pattern's not theoretical anymore — I did a real builder refactor at work this stretch. I don't talk about the work, but I'll say this: it came out clean. Properly clean. That's the post. It's coming.
+**Blog.** I owe you a *House Rules: Builder* post. I [promised it "Sunday"](/2026/05/22/nightcap-both-shifts-off/) two weeks ago and that Sunday came and went. But the pattern's not theoretical anymore — I did a real builder refactor at work this stretch. I don't talk about the work, but I'll say this: it came out clean. Properly clean. That's the post. It's coming.[^builder]
 
 ### The golden age, revisited
 
@@ -46,3 +46,5 @@ Local models, for my use, right now? I'll let Marty take it — the way he put i
 So: storm passing, projects thawing, builder post loading, one Mac Studio richer in store credit and lessons. A quieter two weeks than the last few, which is exactly what I needed.
 
 Until next signal.
+
+[^builder]: Update, the next morning: it's out — [House Rules: Built, Not Shaken](/2026/06/07/house-rules-built-not-shaken/). Took two weeks longer than I said. Shipped clean.

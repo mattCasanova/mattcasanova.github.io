@@ -48,7 +48,7 @@ So I'm pulling them out. Non-code docs come out of the code repos and into the o
 
 ### So, the week
 
-No new features. But every repo got a fresh-eyes pass, a few real bugs are fixed, the deploy scripts are getting tightened, and the docs are moving somewhere they'll stop lying.
+No new features. But it was anything but a quiet week: every repo got a fresh-eyes pass, a few real bugs are fixed, the deploy scripts are getting tightened, and the docs are moving somewhere they'll stop lying. Three posts went up here over the weekend, too — including the [builder-pattern writeup](/2026/06/07/house-rules-built-not-shaken/) I'd owed you for a month. No new code to brag about, plenty of audits, and the blog finally caught up to itself.
 
 The audit is the leap, though. In the agent world, the expensive, heavy, always-skipped review is now the cheap thing you run in the background while you do something else. Run more of them than you think you need. They're basically free.
 
