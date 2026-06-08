@@ -43,3 +43,46 @@ This could be its own "A Confident Dose of Bad Advice" post — "take the risky 
 
 - The original Kotlin paragraph stays in the DI post as the V-Shred aside. This pre-draft is the expanded version with more examples and a thesis.
 - Make sure the closing argument is *not* "always pick the newest shiny thing." That's its own trap. The argument is more like "don't let unfamiliarity be the reason you default to the safer choice."
+
+---
+
+## Negative counterpoint to add — the engineer who refused to learn
+
+(Carried over from the [three-post-seed](three-post-seed.md) Vein 2 rant. Reserved for *this* post specifically — do not double-spend in [Make It a Good One](make-it-a-good-one.md), which uses the friends-pattern abstractly instead.)
+
+The flip side of *don't be afraid to try new things* is the engineer who never tried, ever. Four years on paper that's actually one year of experience repeated four times. The post needs at least one of these to make the positive case land.
+
+### The Vegas iOS guy (~2017)
+
+- First industry job after teaching. Took over an iOS project mid-development from someone who quit on a Friday — never-shipped product, in-flight code.
+- The previous iOS dev had **4 years of iOS experience on paper.** Looked good on a resume.
+- The codebase was using a **deprecated alert pop-up API** (specific name TBD — Matt to look up; UIAlertView vs UIAlertController is the candidate).
+- Xcode (the IDE) was *literally telling him* — deprecation warnings, every build.
+- He didn't care. Kept using what he knew. Wouldn't Google the new pattern.
+- The deprecated calls were **littered through the codebase, not even wrapped in a single helper.** So when Matt fixed it, he had to fix it everywhere.
+- This is the exact archetype of *not adaptive*: the IDE is screaming and you ignore it because Googling the new thing feels like more work than copy-pasting the old thing.
+
+### Why this story matters for this post
+
+- *Don't be afraid to try new things* sounds like motivational fluff without a counterpoint.
+- The iOS guy is what *not trying* looks like. Frozen in mid-2010s iOS patterns despite the IDE warning him about it for years.
+- The contrast makes the thesis sharp:
+  - **Matt:** picked Kotlin / Metal / Rust *despite* never shipping in production. Got better. Got the next job.
+  - **iOS guy:** kept using the deprecated API he learned in year one. Didn't get better. Quit before he got fired.
+- Same period. Same industry. *Different posture.*
+
+### Structure suggestion
+
+Two ways to arrange the post:
+
+1. **Negative-first:** Open with the iOS-guy story as the cautionary opener. Pivot to *"so when I started LiquidMetal2D / V-Shred Kotlin / Flux Rust, I made a different choice."* Walk through the positive bets. Close with *"the safe choice is the one that ages."*
+2. **Positive-first:** Open with Matt's first scary bet (Kotlin at V-Shred). Use it as proof-of-concept. *Then* pivot — *"and here's what the alternative looks like"* — to the iOS guy. Either order works.
+
+Recommendation: **negative-first** is punchier. The reader meets the warning before the lesson, and the thesis ("don't be the iOS guy") lands sharper.
+
+---
+
+## Self-cite map (don't double-spend across the AI/career arc)
+
+- [Make It a Good One](make-it-a-good-one.md) — uses the *friends-not-adapting pattern* (anonymized). This post owns the *Vegas iOS-guy* specific anecdote.
+- [Think, McFly, Think](think-mcfly-think.md) — agency / learning loop. This post is the *language-bet courage* version of the same thesis. Different angle, complementary.
