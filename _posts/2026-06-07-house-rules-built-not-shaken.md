@@ -287,7 +287,7 @@ And the tax, even when it fits: it's a new vocabulary reviewers have to learn, y
 
 ## Closing time
 
-I've been writing the same post for nine months. Singletons, fakes, vendors, all five letters of SOLID — every one had the same answer. *Put an interface on it.* I made it a running gag and [closed the SOLID arc](/2026/05/06/house-rules-d/) on it. *Five letters. One answer.* Mic drop, walk off stage.
+I've been writing the same post for two months. Singletons, fakes, vendors, all five letters of SOLID — every one had the same answer. *Put an interface on it.* I made it a running gag and [closed the SOLID arc](/2026/05/06/house-rules-d/) on it. *Five letters. One answer.* Mic drop, walk off stage.
 
 This is the first post where the answer isn't interfaces — and that's the lesson under the lesson. **The principle isn't the tool.** The principle is **shape the seam between what a caller knows and what a system does.** Interfaces are one tool for that seam, and most days the right one. But when the implementations underneath don't agree on a shape, the seam can't sit at the implementation layer — it moves up to the call site, and there the right tool isn't an interface. It's a Builder.
 

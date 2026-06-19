@@ -7,7 +7,7 @@ tags: [architecture, design-patterns, factory, swift, opinion]
 
 *Design-patterns arc: [Builder](/2026/06/07/house-rules-built-not-shaken/) → Factory. SOLID's [in the can](/2026/05/06/house-rules-d/).*
 
-I'll confess the thing I've been saying for three months straight: my answer to almost every architecture question is *put an interface on it.* [S was interfaces. O was interfaces. All five letters, one answer.](/2026/05/06/house-rules-d/) I love interfaces. I would marry an interface. If a problem holds still long enough, I'll hide it behind a protocol and walk away whistling.
+I'll confess the thing I've been saying for two months straight: my answer to almost every architecture question is *put an interface on it.* [S was interfaces. O was interfaces. All five letters, one answer.](/2026/05/06/house-rules-d/) I love interfaces. I would marry an interface. If a problem holds still long enough, I'll hide it behind a protocol and walk away whistling.
 
 So let's do the post where I admit the one thing an interface flat-out cannot do for you.
 
