@@ -53,7 +53,11 @@ Then the tools changed. Grok first, then Claude, and that pile of half-scripts g
 
 So why spend real money — the Claude subscription, the AWS bill — on a project that doesn't make any? Same reason I'd rather run cheap servers and do the deployment work myself with Claude than pay for managed everything: the money isn't buying product, it's buying learning. That's tuition. I paid it on droplets back then and I'm paying it on agents now, and I don't know where it goes any more than I did the first time. That has never once made it a bad investment.
 
-[The barrier dropped, the bar rose.](/2026/04/19/no-map-no-magic-prompt/) It has never been easier to get code live. It is exactly as hard as it's always been to make it *good* — that part's still your responsibility. School's open. I don't know why anyone would skip class.
+[The barrier dropped, the bar rose.](/2026/04/19/no-map-no-magic-prompt/) It has never been easier to get code live. It is exactly as hard as it's always been to make it *good* — that part's still your responsibility.
+
+And the part I didn't see coming: I'm moving faster than I ever have, and the backlog keeps growing anyway. The ideas come faster than the code. Speed doesn't shrink the list — it feeds it. Good. A backlog that stops growing means you stopped having ideas.
+
+School's open. I don't know why anyone would skip class.
 
 ---
 
