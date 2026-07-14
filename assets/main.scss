@@ -268,6 +268,24 @@ table {
   display: none;
 }
 
+// Home — excerpt under each of the latest posts
+.post-excerpt {
+  color: $foreground-muted;
+  margin-top: 0.35rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+// Home — the way out to the full index
+.back-catalog-link {
+  margin-top: 2.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid $rule;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
 // Series label under post titles
 .series-label {
   font-size: 0.9rem;

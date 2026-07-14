@@ -18,7 +18,11 @@ header_pages:
   - series/bad-advice.md
   - series/house-rules.md
   - series/nightcap.md
+  - back-catalog.md
   - about.md
+
+# How many posts the home page shows. Everything else lives in the Back Catalog.
+home_posts: 6
 
 markdown: kramdown
 highlighter: rouge

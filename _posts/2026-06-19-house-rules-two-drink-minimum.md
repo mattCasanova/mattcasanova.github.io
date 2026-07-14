@@ -3,6 +3,7 @@ layout: post
 title: "House Rules: Two-Drink Minimum"
 series: house-rules
 tags: [architecture, design-patterns, strategy, metal, swift, opinion]
+summary: "The simplest, most boring pattern in the book, played completely straight. Strategy, with the shader system out of my game engine as the example."
 ---
 
 *Design-patterns arc: [Builder](/2026/06/07/house-rules-built-not-shaken/) → [Factory](/2026/06/08/house-rules-who-loads-the-jukebox/) → Strategy. SOLID's [in the can](/2026/05/06/house-rules-d/).*

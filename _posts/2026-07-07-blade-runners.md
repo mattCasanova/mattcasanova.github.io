@@ -2,6 +2,7 @@
 layout: post
 title: "Blade Runners"
 tags: [ai, agents, workflow, claude-code, opinion]
+summary: "Given a few days on a better model, the highest-leverage thing you can build isn't a feature. It's the machine that ships features after the window closes. So I built a crew: reviewers and auditors, AI hunting AI."
 ---
 
 Fable 5 turns back into a pumpkin at midnight tonight.[^1]
