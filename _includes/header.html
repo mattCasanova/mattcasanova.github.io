@@ -30,6 +30,10 @@
           {%- if site.github_username -%}
           <a class="page-link" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener">GitHub</a>
           {%- endif -%}
+          {%- assign about_page = site.pages | where: "path", "about.md" | first -%}
+          {%- if about_page -%}
+          <a class="page-link" href="{{ about_page.url | relative_url }}">{{ about_page.nav_title | default: about_page.title | escape }}</a>
+          {%- endif -%}
         </div>
       </nav>
     {%- endif -%}

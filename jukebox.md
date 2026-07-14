@@ -1,10 +1,10 @@
 ---
 layout: page
-title: "Back Catalog"
-permalink: /back-catalog/
+title: "The Jukebox"
+permalink: /jukebox/
 ---
 
-Every post, newest first.
+Every post, newest first. Punch a code.
 
 {% assign posts_by_month = site.posts | group_by_exp: "post", "post.date | date: '%B %Y'" %}
 {% for month in posts_by_month %}
