@@ -13,3 +13,6 @@ _site/
 
 # Node (if ever added)
 node_modules/
+
+# Local agent instructions — keep out of the public repo
+CLAUDE.md
