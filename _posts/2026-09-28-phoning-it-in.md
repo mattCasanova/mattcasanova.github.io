@@ -9,7 +9,7 @@ I'm on a bus from Daegu to Busan, and three agents are working.
 
 One is building website features. One is building a HIIT timer for the mobile apps. The third is taking this down, because I'm dictating it into my phone, on a bus, in a country where my phone plan is a rumor.
 
-Phoning it in. Literally, for once.
+Phoning it in. Literally, for once. And it's working.
 
 ### The day shift is dark
 
@@ -30,6 +30,8 @@ Then I turned on remote control, the Claude Code feature that lets a phone reach
 Hopefully they stay open the whole month. If something reboots that box, the plan dies with it, and I'll find out from a phone that can't reach anything. That's the whole risk. I took it.
 
 Nobody's home. Everybody's working.
+
+I didn't invent any of this. Remote control is a feature somebody else shipped, and wake on LAN is older than my career. But I haven't met anyone else running four agents off a headless Mac mini from a bus seat on the other side of the planet. Not common. Not yet. I'll take the head start.
 
 ### What fits through a phone
 
@@ -57,7 +59,7 @@ Which means the bottleneck moved and didn't shrink. Back home the bottleneck was
 
 ### Last call
 
-This blog's colors are named after this country. Gangnam Night for the background. Last Train Home for the footer. I picked those names in April from a desk in Seattle, and now I'm dictating a post under the real thing.
+Back in April I told you [there's no map](/2026/04/19/no-map-no-magic-prompt/) for working this way, and that you draw your own. Here's mine this week: a phone, a bus, and a box at home that refuses to sleep. Next month the map will look different. It always does. Finding the next version is the best part of this job right now, and I'm not going to pretend I'm not enjoying it.
 
 The bus is slowing down. Busan's coming up. Three sessions are still going, and one of them is about to save this file into a folder on a machine I won't touch for a month.
 
