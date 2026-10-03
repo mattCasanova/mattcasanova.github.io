@@ -57,6 +57,8 @@ It put a massive amount of code in main. Code that should be wrapped in a game e
 
 No architecture. With two working examples of the exact architecture open on the same disk.
 
+And it's a familiar shape. Everything in main is the same mistake as every iOS and Android tutorial that puts the whole app in the view controller or the activity. Business logic, networking, state, all of it in the one file the framework handed you. [I wrote about those 1,200-line view controllers in April](/2026/04/15/house-rules-the-other-four-letters/), and nobody defends that architecture. It's just what you get when the only goal is making the thing run.
+
 Let me be fair to it, because fair matters here. This was a very quick first pass. I don't even have a triangle rendering yet. I caught it early and I'm tweaking it now, which is the system working the way it's supposed to: it goes fast, I read it, I redirect. That's [the loop I described in April](/2026/04/19/no-map-no-magic-prompt/) and it hasn't changed.
 
 But the thing it skipped is the thing I pointed it directly at. Not a subtle call. Not a judgment at the edges. The foundational layer, the part that decides what the next two years of this engine cost.
